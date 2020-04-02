@@ -1,11 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import Header from "./components/Header"
+import Footer from "./components/Footer"
+import Content from "./components/Content"
+import Menu from "./components/Menu/Menu"
 
 function App() {
+  const menuItems=[
+    {text:'Home',
+      href:"/",
+      },
+    {text:'API INDIA',
+      href:"/api",
+      },
+    {text:'API WORLD',
+      href:"/api_india",
+      },
+  ]
+
   return (
     <div className="App">
-      <header className="App-header">
+      <Menu menu_items={menuItems}/>
+      <Header/>
+      <div className="container">
+      <Content/>
+      </div>
+      <Footer/>
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -18,7 +40,7 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }
