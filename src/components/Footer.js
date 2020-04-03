@@ -3,7 +3,7 @@ import React from "react"
 function Footer(){
     return(
         <footer>
-            This is a footer
+            AkashRaj@2020
         </footer>
     )
 }

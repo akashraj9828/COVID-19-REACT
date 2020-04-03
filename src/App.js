@@ -11,12 +11,12 @@ function App() {
     {text:'Home',
       href:"/",
       },
-    {text:'API INDIA',
-      href:"/api",
-      },
-    {text:'API WORLD',
-      href:"/api_india",
-      },
+    // {text:'API INDIA',
+    //   href:"/api",
+    //   },
+    // {text:'API WORLD',
+    //   href:"/api_india",
+    //   },
   ]
 
   return (
