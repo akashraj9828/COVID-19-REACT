@@ -240,7 +240,7 @@ class List extends Component {
                             style:{
                                 fontWeight: "500",
                             },
-                            width:"40px"
+                            width:"50px"
                         },
                         {
                             name: 'State',
@@ -261,7 +261,7 @@ class List extends Component {
                                 color: "black",
                                 fontWeight: "500",
                             },
-                            format:row =><span>{row.total} <span className="blinking">{row.new_total>0 ? "+"+row.new_total :""}</span></span>,
+                            format:row =><span>{row.total} <small className="blinking">{row.new_total>0 ? "+"+row.new_total :""}</small></span>,
                             // cell:row => <div><div style={{ fontWeight: "bold" }}>{row.total}</div> +{row.new_total}</div>,
                         },
                         {
@@ -273,7 +273,7 @@ class List extends Component {
                                 color: "orange",
                                 fontWeight: "500",
                             },
-                            format:row =><span>{row.active} <span className="blinking" style={{color:"red"}}>{row.new_active>0 ? "+"+row.new_active :""}</span></span>,
+                            format:row =><span>{row.active} <small className="blinking" style={{color:"red"}}>{row.new_active>0 ? "+"+row.new_active :""}</small></span>,
 
 
                         },
@@ -286,7 +286,7 @@ class List extends Component {
                                 color: "red",
                                 fontWeight: "500",
                             },
-                            format:row =><span>{row.deaths} <span className="blinking">{row.new_deaths>0 ? "+"+row.new_deaths :""}</span></span>,
+                            format:row =><span>{row.deaths} <small className="blinking">{row.new_deaths>0 ? "+"+row.new_deaths :""}</small></span>,
 
 
                         },
@@ -299,7 +299,7 @@ class List extends Component {
                                 color: "green",
                                 fontWeight: "500",
                             },
-                            format:row =><span>{row.recovered} <span className="blinking">{row.new_recovered>0 ? "+"+row.new_recovered :""}</span></span>,
+                            format:row =><span>{row.recovered} <small className="blinking">{row.new_recovered>0 ? "+"+row.new_recovered :""}</small></span>,
 
 
                         },

@@ -3,7 +3,6 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import { log } from "util";
 
 
 am4core.useTheme(am4themes_animated);
@@ -14,7 +13,7 @@ class Map extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            isLoaded:false
+            isLoaded: false
         }
     }
 
@@ -79,34 +78,35 @@ class Map extends Component {
 
     async componentDidMount() {
 
+        let enable_cirlce = false
         let url = this.props.url
         let india_map_url = "./data/india_map.json"
         let india_map_dict = "./data/india_map_dict.json"
         // let india_map_url = "./data/india_map.json"
         // let india_map_dict = "./data/india_map_dict.json"
         let data = await fetch(url).then(res => res.json()).then(
-            (data) => {return data},
-            (error)=>{
-                this.updateState({error:error})
-                return{}
+            (data) => { return data },
+            (error) => {
+                this.updateState({ error: error })
+                return {}
             }
         )
         let am4geodata_indiaHigh = await fetch(india_map_url).then(res => res.json()).then(
-            (data) => {return data},
-            (error)=>{
-                this.updateState({error:error})
-                return{}
+            (data) => { return data },
+            (error) => {
+                this.updateState({ error: error })
+                return {}
             }
         )
         let india_dict = await fetch(india_map_dict).then(res => res.json()).then(
-            (data) => {return data},
-            (error)=>{
-                this.updateState({error:error})
-                return{}
+            (data) => { return data },
+            (error) => {
+                this.updateState({ error: error })
+                return {}
             }
         )
 
-        if(this.state.error){
+        if (this.state.error) {
             return
         }
         let states_cases = []
@@ -141,7 +141,7 @@ class Map extends Component {
             // let color_circle = `rgba(${confirmed},${deaths},${recovered},0.2)`
             // let color_fill = `rgba(${confirmed},${deaths},${recovered},0.2)`
             let color_circle = `rgba(${confirmed},50,50,0.8)`
-            let color_fill = `rgba(${confirmed},100,100,0.5)`
+            let color_fill = `rgba(${confirmed},100,100,0.8)`
             am4geodata_indiaHigh.features[i].properties.value = confirmed
             am4geodata_indiaHigh.features[i].properties.deaths = deaths
             am4geodata_indiaHigh.features[i].properties.recovered = recovered
@@ -162,8 +162,8 @@ class Map extends Component {
         }
 
         this.updateState({
-            isLoaded:true,
-            error:false,
+            isLoaded: true,
+            error: false,
         })
 
         let min_val = Math.min(...states_cases)
@@ -181,7 +181,7 @@ class Map extends Component {
 
         chart.responsive.enabled = true;
 
-        // heatmap
+        // heatmap legends
         let heatLegend = chart.createChild(am4charts.HeatLegend);
         heatLegend.minColor = am4core.color(`rgba(${min_val},50,50,0.8)`);
         heatLegend.maxColor = am4core.color(`rgba(${max_val},50,50,0.8)`);
@@ -190,13 +190,17 @@ class Map extends Component {
         heatLegend.maxValue = max_val;
         // heatLegend.series = states_cases;
         heatLegend.width = am4core.percent(100);
-        heatLegend.valueAxis.renderer.labels.template.fontSize = 9;
+        heatLegend.valueAxis.renderer.labels.template.fontSize = 0;
+        heatLegend.valueAxis.renderer.labels.template.visible = false;
         heatLegend.valueAxis.renderer.minGridDistance = 30;
+        heatLegend.markerContainer.height = 50;
+
         heatLegend.orientation = "vertical";
-        heatLegend.postion="absolute"
-        heatLegend.x=10
-        heatLegend.y=40
+        heatLegend.postion = "absolute"
+        heatLegend.x = 10
+        heatLegend.y = 40
         // heatLegend.markerContainer.height = am4core.percent(100);
+        heatLegend.labels = true;
 
 
 
@@ -223,13 +227,16 @@ class Map extends Component {
         polygonSeries.strokeWidth = 0.5;
         polygonSeries.calculateVisualCenter = true;
 
-        var imageSeries = chart.series.push(new am4maps.MapImageSeries());
-        imageSeries.data = mapData;
-        imageSeries.dataFields.value = "value";
+        if (enable_cirlce) {
 
-        var imageTemplate = imageSeries.mapImages.template;
-        imageTemplate.nonScaling = false
+            var imageSeries = chart.series.push(new am4maps.MapImageSeries());
+            imageSeries.data = mapData;
+            imageSeries.dataFields.value = "value";
 
+            var imageTemplate = imageSeries.mapImages.template;
+            imageTemplate.nonScaling = false
+
+        }
 
         var polygonTemplate = polygonSeries.mapPolygons.template;
         polygonTemplate.nonScaling = false
@@ -245,43 +252,49 @@ class Map extends Component {
         hs.propertyFields.fill = "color";
         hs.fillOpacity = 0;
 
-        var circle = imageTemplate.createChild(am4core.Circle);
-        circle.fillOpacity = 1;
-        circle.propertyFields.fill = "color";
-        circle.tooltipText = `[bold] {name}[/]
-        -------
-        Total: [bold]{value}[/] 
-        Recovered: [bold]{recovered}[/] 
-        Deaths: [bold]{deaths}`;
-        // console.log(states_cases)
-        // console.log("max", Math.max(...states_cases))
-        imageSeries.heatRules.push({
-            "target": circle,
-            "property": "radius",
-            "min": 5,
-            "max": 50,
-            "dataField": "value"
-        })
+        if (enable_cirlce) {
 
-        imageTemplate.adapter.add("latitude", function (latitude, target) {
-            var polygon = polygonSeries.getPolygonById(target.dataItem.dataContext.id);
-            if (polygon) {
-                return polygon.visualLatitude;
-            }
-            return latitude;
-        })
+            var circle = imageTemplate.createChild(am4core.Circle);
+            circle.fillOpacity = 1;
+            circle.propertyFields.fill = "color";
+            circle.tooltipText = `[bold] {name}[/]
+            -------
+            Total: [bold]{value}[/] 
+            Recovered: [bold]{recovered}[/] 
+            Deaths: [bold]{deaths}`;
+            // console.log(states_cases)
+            // console.log("max", Math.max(...states_cases))
+            imageSeries.heatRules.push({
+                "target": circle,
+                "property": "radius",
+                "min": 5,
+                "max": 50,
+                "dataField": "value"
+            })
 
-        imageTemplate.adapter.add("longitude", function (longitude, target) {
-            var polygon = polygonSeries.getPolygonById(target.dataItem.dataContext.id);
-            if (polygon) {
-                return polygon.visualLongitude;
-            }
-            return longitude;
-        })
+            imageTemplate.adapter.add("latitude", function (latitude, target) {
+                var polygon = polygonSeries.getPolygonById(target.dataItem.dataContext.id);
+                if (polygon) {
+                    return polygon.visualLatitude;
+                }
+                return latitude;
+            })
+
+            imageTemplate.adapter.add("longitude", function (longitude, target) {
+                var polygon = polygonSeries.getPolygonById(target.dataItem.dataContext.id);
+                if (polygon) {
+                    return polygon.visualLongitude;
+                }
+                return longitude;
+            })
 
 
+
+        }
 
         polygonTemplate.events.on("over", function (ev) {
+            this.setState(ev.target.dataItem._dataContext)
+            console.log(ev.target.dataItem._dataContext);
             if (!isNaN(ev.target.dataItem.value)) {
                 heatLegend.valueAxis.showTooltipAt(ev.target.dataItem.value)
             }
@@ -294,8 +307,10 @@ class Map extends Component {
             heatLegend.valueAxis.hideTooltip();
         });
 
-        imageTemplate.events.on("over", function (ev) {
-            if (!isNaN(ev.target.dataItem.value)) {
+        if(enable_cirlce){
+
+            imageTemplate.events.on("over", function (ev) {
+                if (!isNaN(ev.target.dataItem.value)) {
                 heatLegend.valueAxis.showTooltipAt(ev.target.dataItem.value)
             }
             else {
@@ -306,10 +321,11 @@ class Map extends Component {
         imageTemplate.events.on("out", function (ev) {
             heatLegend.valueAxis.hideTooltip();
         });
-
-
+        
+    }
+        
         // console.log(chart);
-
+        
     }
 
     componentWillUnmount() {
@@ -320,8 +336,8 @@ class Map extends Component {
 
     render() {
 
-        let error=this.state.error
-        let isLoaded=this.state.isLoaded
+        let error = this.state.error
+        let isLoaded = this.state.isLoaded
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
