@@ -52,13 +52,13 @@ function ListItem(props) {
                 <td style={{ color: border_col }}>{state_data.confirmed}
                     {state_data.delta.confirmed ? " (+" + state_data.delta.confirmed + ")" : ""}
                 </td>
-                <td ><CardItem data={props.data} /></td>
+                {/* <td ><CardItem data={props.data} /></td> */}
             </tr>
             // <li className="list-group-item">
         )
 
     } else {
-        return (<li style={{ display: "none" }}></li>)
+        return (<tr style={{ display: "none" }}></tr>)
     }
 }
 

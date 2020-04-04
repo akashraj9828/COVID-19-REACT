@@ -1,12 +1,12 @@
 import React from "react"
-
+import {Link} from "react-router-dom"
 function MenuItem(props) {
     // console.log("menu_prop", props);
 
     return (
-        <a className="nav-link" href={props.data.href}>
+        <Link className="nav-link" to={props.data.href}>
             {props.data.text}
-        </a>
+        </Link>
     )
 }
 export default MenuItem

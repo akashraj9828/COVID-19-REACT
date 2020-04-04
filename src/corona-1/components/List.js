@@ -113,7 +113,22 @@ class List extends Component {
         } else {
 
 
-            let min_to_show = 30;
+
+
+            // AmCharts.makeChart("chartdiv", {
+            //     "type": "map",
+            //     "theme": "dark",
+            //     "dataProvider" : {
+            //       "mapURL": "https://www.amcharts.com/lib/3/maps/svg/indiaHigh.svg",
+            //       "getAreasFromMap": true
+            //     },
+            //     "areasSettings": {
+            //       "autoZoom": true,
+            //       "selectedColor": "#CC0000"
+            //     }
+            //   });
+
+            let min_to_show = 20;
             let data_list = []
             let card_list = []
             // statewise
@@ -214,7 +229,7 @@ class List extends Component {
                                 hoverBackgroundColor: active_col_hover,
                                 hoverBorderColor: border_col_hover,
                                 data: states_active,
-                                
+
                             }, {
                                 // label: "India COVID-19-cases",
                                 label: "Recovered",
@@ -245,7 +260,7 @@ class List extends Component {
                         timeline_date.push(obj.date)
                         timeline_cases.push(obj.dailyconfirmed)
                         timeline_recovery.push(obj.dailyrecovered)
-                        timeline_death.push(-obj.dailydeceased)
+                        timeline_death.push(obj.dailydeceased)
                         timeline_total.push(obj.totalconfirmed)
                     }
                     graph_data_timeline = {
@@ -301,7 +316,7 @@ class List extends Component {
             }
 
 
-            let plugin_config={
+            let plugin_config = {
                 // datalabels: {
                 //     display: 'auto',
                 // //    display: true,
@@ -310,12 +325,12 @@ class List extends Component {
                 // offset:100,
                 // anchor:"end"
                 // }
-             }
+            }
 
             let graph_data_options = {
                 title: {
                     display: true,
-                    text: `COVID-19 INDIA STATE WISE (where cases >${min_to_show})`
+                    text: `COVID-19 INDIA STATE WISE (log scale) (where cases >${min_to_show})`
                 },
                 tooltips: {
                     mode: 'index',
@@ -345,6 +360,7 @@ class List extends Component {
                         stacked: true,
                         display: true,
                         beginAtZero: false,
+                        type: "logarithmic",
                         ticks: {
                             autoSkip: true,
                             maxTicksLimit: 5
@@ -358,7 +374,7 @@ class List extends Component {
                     }]
 
                 },
-                plugin:plugin_config,
+                plugin: plugin_config,
 
 
             }
@@ -386,7 +402,8 @@ class List extends Component {
                         }
                     }],
                     yAxes: [{
-                        stacked: false
+                        stacked: false,
+                        type: "logarithmic",
                     }]
                 },
                 fill: true,
@@ -406,7 +423,7 @@ class List extends Component {
                 pointHoverBorderWidth: 2,
                 pointRadius: 0.2,
                 pointHitRadius: 10,
-                plugin:plugin_config,
+                plugin: plugin_config,
 
             }
             let graph_data_total_options = {
@@ -439,7 +456,7 @@ class List extends Component {
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
-                plugin:plugin_config,
+                plugin: plugin_config,
 
             }
 
@@ -459,7 +476,7 @@ class List extends Component {
                         {/* <span class="m-auto font-weight-bold"> Mortality: % </span> */}
                         {/* <span class="m-auto font-weight-bold"> Survival: % </span> */}
                     </div>
-                    <div className="col-12 col-lg-6 my-2">
+                    <div className="col-12 col-lg-6 my-2 mt-4">
                         <h3>State Wise data</h3>
                         <Bar data={graph_data}
                             width={100}
@@ -468,7 +485,7 @@ class List extends Component {
                         />
                     </div>
 
-                    <div className="col-12 my-2">
+                    <div className="col-12 my-2 mt-4">
                         <div className="row">
                             <div className="col-12 my-2">
                                 <h3>Timeline of India</h3>
@@ -485,23 +502,24 @@ class List extends Component {
                             </div>
 
                             <br />
-
-                            <table className="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">State</th>
-                                        <th scope="col">Active</th>
-                                        <th scope="col">Death</th>
-                                        <th scope="col">Recovered</th>
-                                        <th scope="col">Total</th>
-                                        <th scope="col">Graph</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {data_list}
-                                </tbody>
-                            </table>
+                            <div className="table-responsive">
+                                <table className="table table-striped table-hover table-sm ">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">State</th>
+                                            <th scope="col">Active</th>
+                                            <th scope="col">Death</th>
+                                            <th scope="col">Recovered</th>
+                                            <th scope="col">Total</th>
+                                            {/* <th scope="col">Graph</th> */}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {data_list}
+                                    </tbody>
+                                </table>
+                            </div>
 
                             <div className="col-6">
                                 {/* {card_list} */}
