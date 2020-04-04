@@ -1,8 +1,11 @@
-import React, { Component } from "react";
+import React, {
+    Component
+} from "react";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import InfoBar from "./InfoBar";
 
 
 am4core.useTheme(am4themes_animated);
@@ -13,98 +16,74 @@ class Map extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            isLoaded: false
+            isLoaded: false,
         }
-    }
-
-    updateState(obj) {
-        // console.log("Update called with", obj);
-
-        let copy_state = Object.assign({}, this.state)
-        let keys = Object.keys(obj)
-        for (let key in keys) {
-            // console.log(keys[key]);
-            let kk = keys[key]
-            copy_state[kk] = obj[kk]
-        }
-        // copy_state[key] = value
-        // console.log("new state should have been", copy_state);
+        this.setup_chart = this.setup_chart.bind(this)
+        // this.setState = this.setState.bind(this)
 
 
-        this.setState(
-            copy_state
-        )
-    }
-
-    fetchAndSet(url, key) {
-        // console.log("before update ", this.state);
-        fetch(url).then(res => res.json()).then(
-            (data) => {
-                // console.log(data);
-
-                // let change = {
-                //     [key]: data,
-                //     // isLoaded: true,
-                //     timelineLoaded: true,
-                // }
-                // if (key === "data") {
-                //     change.dataLoaded = true
-                // }
-                // if (key === "timeline") {
-                //     change.timelineLoaded = true
-                // }
-                // this.updateState(change)
-
-                // if (this.state.dataLoaded && this.state.timelineLoaded) {
-                //     let change = {
-                //         isLoaded: true,
-                //     }
-                //     this.updateState(change)
-                // }
-                // console.log("after update", this.state);
-                return data
-            },
-            (error) => {
-                let change = {
-                    error: error,
-                    isLoaded: true,
-                }
-                this.updateState(change)
-
-            }
-        )
     }
 
 
-    async componentDidMount() {
+    async getApiData(url, key) {
+        let response = await fetch(url)
+        let data = response.json()
+        const jsondata = await data
+        // console.log(jsondata);
+        // this.setState({ [key]: jsondata })
+        return jsondata
 
-        let enable_cirlce = false
+    }
+
+
+    componentDidMount() {
+
+        this.enable_cirlce = false
         let url = this.props.url
         let india_map_url = "./data/india_map.json"
         let india_map_dict = "./data/india_map_dict.json"
-        // let india_map_url = "./data/india_map.json"
-        // let india_map_dict = "./data/india_map_dict.json"
-        let data = await fetch(url).then(res => res.json()).then(
-            (data) => { return data },
-            (error) => {
-                this.updateState({ error: error })
-                return {}
-            }
-        )
-        let am4geodata_indiaHigh = await fetch(india_map_url).then(res => res.json()).then(
-            (data) => { return data },
-            (error) => {
-                this.updateState({ error: error })
-                return {}
-            }
-        )
-        let india_dict = await fetch(india_map_dict).then(res => res.json()).then(
-            (data) => { return data },
-            (error) => {
-                this.updateState({ error: error })
-                return {}
-            }
-        )
+        let data = this.getApiData(url, "data")
+        let am4geodata_indiaHigh = this.getApiData(india_map_url, "am4geodata_indiaHigh")
+        let india_dict = this.getApiData(india_map_dict, "india_dict")
+
+        Promise.all([data, am4geodata_indiaHigh, india_dict]).then((responses) =>
+            this.setState({
+                isLoaded: true,
+                data: responses[0],
+                am4geodata_indiaHigh: responses[1],
+                india_dict: responses[2],
+                hovered: {
+                    name: "India",
+                    value: responses[0].total_values.confirmed,
+                    active: responses[0].total_values.active,
+                    deaths: responses[0].total_values.deaths,
+                    recovered: responses[0].total_values.recovered,
+                }
+            })
+        ).then(() => this.setup_chart());
+        // console.log("after api calzzzz", data, am4geodata_indiaHigh, india_dict)
+    }
+
+    setup_chart() {
+
+        let enable_cirlce = false
+        let data = this.state.data
+        let am4geodata_indiaHigh = this.state.am4geodata_indiaHigh
+        let india_dict = this.state.india_dict
+
+        let india_total_stats = {
+            name: "India",
+            value: data.total_values.confirmed,
+            active: data.total_values.active,
+            deaths: data.total_values.deaths,
+            recovered: data.total_values.recovered,
+        }
+        // console.log(data.total_values);
+
+        // console.log(data);
+        // console.log(am4geodata_indiaHigh);
+        // console.log(india_dict);
+
 
         if (this.state.error) {
             return
@@ -147,24 +126,23 @@ class Map extends Component {
             am4geodata_indiaHigh.features[i].properties.recovered = recovered
             am4geodata_indiaHigh.features[i].properties.active = active
             am4geodata_indiaHigh.features[i].properties.color = color_fill
-            mapData.push(
-                {
-                    "id": india_dict[key],
-                    "name": key,
-                    "value": confirmed,
-                    "deaths": deaths,
-                    "recovered": recovered,
-                    "active": active,
-                    "color": color_circle,
-                }
-            )
+            mapData.push({
+                "id": india_dict[key],
+                "name": key,
+                "value": confirmed,
+                "deaths": deaths,
+                "recovered": recovered,
+                "active": active,
+                "color": color_circle,
+                "tooltipColor": "red",
+            })
 
         }
 
-        this.updateState({
-            isLoaded: true,
-            error: false,
-        })
+        // this.updateState({
+        //     isLoaded: true,
+        //     error: false,
+        // })
 
         let min_val = Math.min(...states_cases)
         let max_val = Math.max(...states_cases)
@@ -203,14 +181,10 @@ class Map extends Component {
         heatLegend.labels = true;
 
 
-
-
-
-
         var total_data = data.total_values
         var title = chart.titles.create();
-        title.text = ` Cases: [bold]${total_data.confirmed}[/] Recovered: [bold]${total_data.recovered}[/] Deaths: [bold]${total_data.deaths}`;
-        // title.text = "[bold font-size: 20]India COVID-19 Spread[/]";
+        // title.text = ` Cases: [bold]${total_data.confirmed}[/] Recovered: [bold]${total_data.recovered}[/] Deaths: [bold]${total_data.deaths}`;
+        title.text = "[bold font-size: 20]India COVID-19 Spread[/]";
         // title.textAlign = "middle";
 
         chart.geodata = am4geodata_indiaHigh;
@@ -242,6 +216,13 @@ class Map extends Component {
         polygonTemplate.nonScaling = false
         polygonTemplate.propertyFields.fill = "color";
         polygonTemplate.fillOpacity = 1;
+
+        // set tooltip color
+        polygonSeries.tooltip.getFillFromObject = false;
+        polygonSeries.tooltip.background.fill = am4core.color("rgba(100,100,100,0.8)");
+        polygonSeries.tooltip.label.fill = am4core.color("white");
+        // 
+
         polygonTemplate.tooltipText = `[bold] {name}[/]
         -------
         Total: [bold]{value}[/] 
@@ -291,43 +272,45 @@ class Map extends Component {
 
 
         }
-
+        let currentComponent = this;
         polygonTemplate.events.on("over", function (ev) {
-            this.setState(ev.target.dataItem._dataContext)
-            console.log(ev.target.dataItem._dataContext);
+            currentComponent.setState({
+                hovered: ev.target.dataItem._dataContext
+            })
+            // console.log(ev.target.dataItem._dataContext);
             if (!isNaN(ev.target.dataItem.value)) {
                 heatLegend.valueAxis.showTooltipAt(ev.target.dataItem.value)
-            }
-            else {
+            } else {
                 heatLegend.valueAxis.hideTooltip();
             }
         });
 
         polygonTemplate.events.on("out", function (ev) {
             heatLegend.valueAxis.hideTooltip();
+            currentComponent.setState({
+                hovered: india_total_stats
+            })
+
+
         });
 
-        if(enable_cirlce){
+        if (enable_cirlce) {
 
             imageTemplate.events.on("over", function (ev) {
                 if (!isNaN(ev.target.dataItem.value)) {
-                heatLegend.valueAxis.showTooltipAt(ev.target.dataItem.value)
-            }
-            else {
+                    heatLegend.valueAxis.showTooltipAt(ev.target.dataItem.value)
+                } else {
+                    heatLegend.valueAxis.hideTooltip();
+                }
+            });
+
+            imageTemplate.events.on("out", function (ev) {
                 heatLegend.valueAxis.hideTooltip();
-            }
-        });
+            });
 
-        imageTemplate.events.on("out", function (ev) {
-            heatLegend.valueAxis.hideTooltip();
-        });
-        
+            // console.log(chart);
+        }
     }
-        
-        // console.log(chart);
-        
-    }
-
     componentWillUnmount() {
         if (this.chart) {
             this.chart.dispose();
@@ -335,11 +318,11 @@ class Map extends Component {
     }
 
     render() {
-
+        // console.log("in render", this.state);
         let error = this.state.error
         let isLoaded = this.state.isLoaded
         if (error) {
-            return <div>Error: {error.message}</div>;
+            return <div> Error: {error.message} </div>
         } else if (!isLoaded) {
             let loader_style = {
                 position: "fixed",
@@ -351,20 +334,28 @@ class Map extends Component {
                 background: "#fff",
                 zIndex: "999999999",
                 bottom: "0",
-                // display: "flex",
             }
-            return (<div className="loader">
-                <div className="corona-loading" style={loader_style}>
-                    <img className="mt-5" src="./virus.png" alt="" />
-                    <p className="text-center" style={{ margin: "auto" }}>Loading result ...</p>
+            return (
+                <div className="loader" >
+                    <div className="corona-loading" style={loader_style}>
+                        <img className="mt-5"
+                            src="./virus.png"
+                            alt="" />
+                        <p className="text-center" style={{ margin: "auto" }}> Loading result... </p>
+                    </div>
                 </div>
-            </div>)
-        } else {
+            )
+        }
+        else {
+
             return (
 
-                <div>
-                    {/* This is map */}
+                <div> {/* This is map */}
                     <div id="map-chart-container" style={{ width: "100%", height: "100vh" }}></div>
+
+                    <div id="info-bar" style={{ position: "fixed", bottom: "25px",  width: "100%" }}>
+                        <InfoBar data={this.state.hovered} />
+                    </div>
                 </div>
             )
         }
