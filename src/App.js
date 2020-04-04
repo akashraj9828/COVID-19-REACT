@@ -33,8 +33,8 @@ function App() {
   const install_directory = "/corona/react_mod"
   return (
     <div className="App">
-      <Router path={install_directory} basename={install_directory}>
-        {/* <Menu menu_items={menuItems} /> */}
+      <Router path={"/"} basename={install_directory}>
+        <Menu menu_items={menuItems} />
         {/* <Header /> */}
         {/* <div className="container"> */}
         {/* <div className="mx-2 mx-md-5 mx-xl-5 px-0 px-md-5 px-xl-5"> */}

@@ -2,8 +2,7 @@ import React from "react"
 
 function InfoBar(props) {
     const data = props.data
-
-    
+    // console.log('infobar rendered')
     // console.log("info bar props",data);
 
     let name = "Hover over any state"

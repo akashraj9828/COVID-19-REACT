@@ -37,8 +37,8 @@ class Map extends Component {
 
 
     componentDidMount() {
+        // console.log("map cpmpnent mount");
 
-        this.enable_cirlce = false
         let url = this.props.url
         let india_map_url = "./data/india_map.json"
         let india_map_dict = "./data/india_map_dict.json"
@@ -65,8 +65,10 @@ class Map extends Component {
     }
 
     setup_chart() {
+        // console.log("map setup chart");
 
-        let enable_cirlce = false
+        let enable_cirlce = true
+        let enable_legend = true
         let data = this.state.data
         let am4geodata_indiaHigh = this.state.am4geodata_indiaHigh
         let india_dict = this.state.india_dict
@@ -139,10 +141,6 @@ class Map extends Component {
 
         }
 
-        // this.updateState({
-        //     isLoaded: true,
-        //     error: false,
-        // })
 
         let min_val = Math.min(...states_cases)
         let max_val = Math.max(...states_cases)
@@ -159,27 +157,30 @@ class Map extends Component {
 
         chart.responsive.enabled = true;
 
+
         // heatmap legends
-        let heatLegend = chart.createChild(am4charts.HeatLegend);
-        heatLegend.minColor = am4core.color(`rgba(${min_val},50,50,0.8)`);
-        heatLegend.maxColor = am4core.color(`rgba(${max_val},50,50,0.8)`);
-        // heatLegend.maxColor = am4core.color("#ED7B84");
-        heatLegend.minValue = min_val;
-        heatLegend.maxValue = max_val;
-        // heatLegend.series = states_cases;
-        heatLegend.width = am4core.percent(100);
-        heatLegend.valueAxis.renderer.labels.template.fontSize = 0;
-        heatLegend.valueAxis.renderer.labels.template.visible = false;
-        heatLegend.valueAxis.renderer.minGridDistance = 30;
-        heatLegend.markerContainer.height = 50;
+        let heatLegend = null
+        if (enable_legend) {
+            heatLegend = chart.createChild(am4charts.HeatLegend);
+            heatLegend.minColor = am4core.color(`rgba(${min_val},50,50,0.8)`);
+            heatLegend.maxColor = am4core.color(`rgba(${max_val},50,50,0.8)`);
+            // heatLegend.maxColor = am4core.color("#ED7B84");
+            heatLegend.minValue = min_val;
+            heatLegend.maxValue = max_val;
+            // heatLegend.series = states_cases;
+            heatLegend.width = am4core.percent(100);
+            heatLegend.valueAxis.renderer.labels.template.fontSize = 0;
+            heatLegend.valueAxis.renderer.labels.template.visible = false;
+            heatLegend.valueAxis.renderer.minGridDistance = 30;
+            heatLegend.markerContainer.height = 50;
 
-        heatLegend.orientation = "vertical";
-        heatLegend.postion = "absolute"
-        heatLegend.x = 10
-        heatLegend.y = 40
-        // heatLegend.markerContainer.height = am4core.percent(100);
-        heatLegend.labels = true;
-
+            heatLegend.orientation = "vertical";
+            heatLegend.postion = "absolute"
+            heatLegend.x = 10
+            heatLegend.y = 40
+            // heatLegend.markerContainer.height = am4core.percent(100);
+            heatLegend.labels = true;
+        }
 
         var total_data = data.total_values
         var title = chart.titles.create();
@@ -207,6 +208,7 @@ class Map extends Component {
             imageSeries.data = mapData;
             imageSeries.dataFields.value = "value";
 
+
             var imageTemplate = imageSeries.mapImages.template;
             imageTemplate.nonScaling = false
 
@@ -233,7 +235,14 @@ class Map extends Component {
         hs.propertyFields.fill = "color";
         hs.fillOpacity = 0;
 
+        let currentComponent = this;
+
         if (enable_cirlce) {
+
+            // set tooltip color
+            imageSeries.tooltip.getFillFromObject = false;
+            imageSeries.tooltip.background.fill = am4core.color("rgba(100,100,100,0.8)");
+            imageSeries.tooltip.label.fill = am4core.color("white");
 
             var circle = imageTemplate.createChild(am4core.Circle);
             circle.fillOpacity = 1;
@@ -272,21 +281,26 @@ class Map extends Component {
 
 
         }
-        let currentComponent = this;
         polygonTemplate.events.on("over", function (ev) {
             currentComponent.setState({
                 hovered: ev.target.dataItem._dataContext
             })
             // console.log(ev.target.dataItem._dataContext);
-            if (!isNaN(ev.target.dataItem.value)) {
-                heatLegend.valueAxis.showTooltipAt(ev.target.dataItem.value)
-            } else {
-                heatLegend.valueAxis.hideTooltip();
+            if (enable_legend) {
+
+                if (!isNaN(ev.target.dataItem.value)) {
+                    heatLegend.valueAxis.showTooltipAt(ev.target.dataItem.value)
+                } else {
+                    heatLegend.valueAxis.hideTooltip();
+                }
             }
         });
 
         polygonTemplate.events.on("out", function (ev) {
-            heatLegend.valueAxis.hideTooltip();
+
+            if (enable_legend) {
+                heatLegend.valueAxis.hideTooltip();
+            }
             currentComponent.setState({
                 hovered: india_total_stats
             })
@@ -297,15 +311,27 @@ class Map extends Component {
         if (enable_cirlce) {
 
             imageTemplate.events.on("over", function (ev) {
-                if (!isNaN(ev.target.dataItem.value)) {
-                    heatLegend.valueAxis.showTooltipAt(ev.target.dataItem.value)
-                } else {
-                    heatLegend.valueAxis.hideTooltip();
+                currentComponent.setState({
+                    hovered: ev.target.dataItem._dataContext
+                })
+                if (enable_legend) {
+
+                    if (!isNaN(ev.target.dataItem.value)) {
+                        heatLegend.valueAxis.showTooltipAt(ev.target.dataItem.value)
+                    } else {
+                        heatLegend.valueAxis.hideTooltip();
+                    }
                 }
             });
 
             imageTemplate.events.on("out", function (ev) {
-                heatLegend.valueAxis.hideTooltip();
+                currentComponent.setState({
+                    hovered: india_total_stats
+                })
+                if (enable_legend) {
+
+                    heatLegend.valueAxis.hideTooltip();
+                }
             });
 
             // console.log(chart);
@@ -319,6 +345,7 @@ class Map extends Component {
 
     render() {
         // console.log("in render", this.state);
+        // console.log('map rendered')
         let error = this.state.error
         let isLoaded = this.state.isLoaded
         if (error) {
@@ -353,7 +380,7 @@ class Map extends Component {
                 <div> {/* This is map */}
                     <div id="map-chart-container" style={{ width: "100%", height: "100vh" }}></div>
 
-                    <div id="info-bar" style={{ position: "fixed", bottom: "25px",  width: "100%" }}>
+                    <div id="info-bar" style={{ position: "fixed", bottom: "25px", width: "100%" }}>
                         <InfoBar data={this.state.hovered} />
                     </div>
                 </div>
