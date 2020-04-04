@@ -16,7 +16,7 @@ function Footer() {
     return (
         <footer style={footerStyle}>
             <a style={footerLinkStyle} href="https://akashraj.tech">
-                AkashRaj@{new Date().getFullYear()}
+                 AkashRaj @{new Date().getFullYear()}
             </a>
         </footer>
     )

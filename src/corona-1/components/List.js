@@ -2,6 +2,12 @@ import React from "react"
 import { Component } from "react"
 import ListItem from "./ListItem"
 import CardItem from "./CardItem"
+import Table from "./Table"
+import SubTable from "./SubTable"
+
+import graph_data_options from "./GraphDataOptions"
+import graph_data_timeline_options from "./GraphDataTimelineOptions"
+import graph_data_total_options from "./GraphDataTotalOptions"
 // import 'chartjs-plugin-datalabels';
 
 import { Bar } from 'react-chartjs-2';
@@ -113,22 +119,6 @@ class List extends Component {
             </div>)
         } else {
 
-
-
-
-            // AmCharts.makeChart("chartdiv", {
-            //     "type": "map",
-            //     "theme": "dark",
-            //     "dataProvider" : {
-            //       "mapURL": "https://www.amcharts.com/lib/3/maps/svg/indiaHigh.svg",
-            //       "getAreasFromMap": true
-            //     },
-            //     "areasSettings": {
-            //       "autoZoom": true,
-            //       "selectedColor": "#CC0000"
-            //     }
-            //   });
-
             let min_to_show = 20;
             let data_list = []
             let card_list = []
@@ -167,13 +157,6 @@ class List extends Component {
             let border_col = "rgba(201, 179, 193, 1)"
             let border_col_hover = "rgba(201, 179, 193, 1)"
 
-            const formatter = (value, ctx) => {
-                const otherDatasetIndex = ctx.datasetIndex === 0 ? 1 : 0;
-                const total =
-                    ctx.chart.data.datasets[otherDatasetIndex].data[ctx.dataIndex] + value;
-
-                return `${(value / total * 100).toFixed(0)}%`;
-            };
 
             let dataTable_data = []
             let columns = {}
@@ -186,20 +169,21 @@ class List extends Component {
                     for (let key in all_keys) {
                         // console.log(key);
                         key = all_keys[key]
-                        if(!data.state_wise[key].confirmed){
+                        if (!data.state_wise[key].confirmed) {
                             continue
                         }
                         let confirmed = parseInt(data.state_wise[key].confirmed)
                         let deaths = parseInt(data.state_wise[key].deaths)
                         let recovered = parseInt(data.state_wise[key].recovered)
                         let active = parseInt(data.state_wise[key].active)
-                        
-                        let new_confirmed = data.state_wise[key].delta.confirmed ? parseInt(data.state_wise[key].delta.confirmed):0
-                        let new_deaths = data.state_wise[key].delta.deaths ? parseInt(data.state_wise[key].delta.deaths):0
-                        let new_recovered = data.state_wise[key].delta.recovered ? parseInt(data.state_wise[key].delta.recovered):0
-                        let new_active = data.state_wise[key].delta.active ? parseInt(data.state_wise[key].delta.active):0
 
-        
+                        let new_confirmed = data.state_wise[key].delta.confirmed ? parseInt(data.state_wise[key].delta.confirmed) : 0
+                        let new_deaths = data.state_wise[key].delta.deaths ? parseInt(data.state_wise[key].delta.deaths) : 0
+                        let new_recovered = data.state_wise[key].delta.recovered ? parseInt(data.state_wise[key].delta.recovered) : 0
+                        let new_active = data.state_wise[key].delta.active ? parseInt(data.state_wise[key].delta.active) : 0
+                        let district_wise = data.state_wise[key].district
+
+
                         if (confirmed > min_to_show) {
 
                             states_cases.push(confirmed)
@@ -220,6 +204,7 @@ class List extends Component {
                                 new_active: new_active,
                                 new_deaths: new_deaths,
                                 new_recovered: new_recovered,
+                                district_wise: district_wise,
                             }
                         )
 
@@ -237,20 +222,20 @@ class List extends Component {
                             name: '#',
                             selector: 'id',
                             sortable: true,
-                            style:{
+                            style: {
                                 fontWeight: "500",
                             },
-                            width:"50px"
+                            width: "50px"
                         },
                         {
                             name: 'State',
                             selector: 'state',
                             sortable: true,
                             left: true,
-                            style:{
+                            style: {
                                 fontWeight: "500",
                             },
-                            
+
                         },
                         {
                             name: 'Total',
@@ -261,8 +246,10 @@ class List extends Component {
                                 color: "black",
                                 fontWeight: "500",
                             },
-                            format:row =><span>{row.total} <small className="blinking">{row.new_total>0 ? "+"+row.new_total :""}</small></span>,
+                            format: row => <span>{row.total} <small className="blinking">{row.new_total > 0 ? "+" + row.new_total : ""}</small></span>,
                             // cell:row => <div><div style={{ fontWeight: "bold" }}>{row.total}</div> +{row.new_total}</div>,
+                            width: "100px"
+
                         },
                         {
                             name: 'Active',
@@ -273,7 +260,8 @@ class List extends Component {
                                 color: "orange",
                                 fontWeight: "500",
                             },
-                            format:row =><span>{row.active} <small className="blinking" style={{color:"red"}}>{row.new_active>0 ? "+"+row.new_active :""}</small></span>,
+                            format: row => <span>{row.active} <small className="blinking" style={{ color: "red" }}>{row.new_active > 0 ? "+" + row.new_active : ""}</small></span>,
+                            width: "100px"
 
 
                         },
@@ -286,7 +274,8 @@ class List extends Component {
                                 color: "red",
                                 fontWeight: "500",
                             },
-                            format:row =><span>{row.deaths} <small className="blinking">{row.new_deaths>0 ? "+"+row.new_deaths :""}</small></span>,
+                            format: row => <span>{row.deaths} <small className="blinking">{row.new_deaths > 0 ? "+" + row.new_deaths : ""}</small></span>,
+                            width: "100px"
 
 
                         },
@@ -299,7 +288,8 @@ class List extends Component {
                                 color: "green",
                                 fontWeight: "500",
                             },
-                            format:row =><span>{row.recovered} <small className="blinking">{row.new_recovered>0 ? "+"+row.new_recovered :""}</small></span>,
+                            format: row => <span>{row.recovered} <small className="blinking">{row.new_recovered > 0 ? "+" + row.new_recovered : ""}</small></span>,
+                            width: "100px"
 
 
                         },
@@ -434,140 +424,13 @@ class List extends Component {
                 // }
             }
 
-            let graph_data_options = {
-                title: {
-                    display: true,
-                    text: `COVID-19 INDIA STATE WISE (log scale) (where cases >${min_to_show})`
-                },
-                tooltips: {
-                    mode: 'index',
-                    intersect: false,
-                    titleAlign: "left",
-                    bodyAlign: "left",
-                    footerAlign: "left",
-                },
-                responsive: true,
-                maintainAspectRatio: true,
-                // aspectRatio: 10,
-                // height:100,
-                scales: {
-                    // scaleLabel :{
-                    //     fontSize:1
-                    // },
-                    xAxes: [{
-                        stacked: true,
-                        ticks: {
-                            autoSkip: true,
-                            // maxTicksLimit: 10
-                            reverse: true,
-                        }
-
-                    }],
-                    yAxes: [{
-                        stacked: true,
-                        display: true,
-                        beginAtZero: false,
-                        type: "logarithmic",
-                        ticks: {
-                            autoSkip: true,
-                            maxTicksLimit: 5
-                            // min: 10,
-                            // max:100,
-                            // sampleSize:10,
-                            // autoSkip:true,
-                            // mirror:true,
-                            // padding:10,
-                        }
-                    }]
-
-                },
-                plugin: plugin_config,
 
 
-            }
-
-            let graph_data_timeline_options = {
-                title: {
-                    display: true,
-                    text: 'COVID-19 INDIA DAILY UPDATE'
-                },
-                tooltips: {
-                    mode: 'index',
-                    intersect: false,
-                    position: 'nearest'
-                },
-                // responsive: true,
-                responsive: true,
-                maintainAspectRatio: true,
-                scales: {
-                    xAxes: [{
-                        stacked: false,
-
-                        ticks: {
-                            autoSkip: true,
-                            maxTicksLimit: 20
-                        }
-                    }],
-                    yAxes: [{
-                        stacked: false,
-                        type: "logarithmic",
-                    }]
-                },
-                fill: true,
-                lineTension: 0.2,
-                backgroundColor: 'rgba(75,192,192,0.4)',
-                borderColor: 'rgba(75,192,192,1)',
-                borderCapStyle: 'butt',
-                borderDash: [],
-                borderDashOffset: 1.0,
-                borderJoinStyle: 'miter',
-                pointBorderColor: 'rgba(75,192,192,1)',
-                pointBackgroundColor: '#fff',
-                pointBorderWidth: 10,
-                pointHoverRadius: 50,
-                pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-                pointHoverBorderColor: 'rgba(220,220,220,1)',
-                pointHoverBorderWidth: 2,
-                pointRadius: 0.2,
-                pointHitRadius: 10,
-                plugin: plugin_config,
-
-            }
-            let graph_data_total_options = {
-                title: {
-                    display: true,
-                    text: 'COVID-19 INDIA DAILY UPDATE'
-                },
-
-                tooltips: {
-                    mode: 'index',
-                    intersect: false,
-                    position: 'nearest'
-                },
-                responsive: true,
-
-                fill: true,
-                lineTension: 0.1,
-                backgroundColor: 'rgba(75,192,192,0.4)',
-                borderColor: 'rgba(75,192,192,1)',
-                borderCapStyle: 'butt',
-                borderDash: [],
-                borderDashOffset: 0.0,
-                borderJoinStyle: 'miter',
-                pointBorderColor: 'rgba(75,192,192,1)',
-                pointBackgroundColor: '#fff',
-                pointBorderWidth: 1,
-                pointHoverRadius: 5,
-                pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-                pointHoverBorderColor: 'rgba(220,220,220,1)',
-                pointHoverBorderWidth: 2,
-                pointRadius: 1,
-                pointHitRadius: 10,
-                plugin: plugin_config,
-
-            }
 
 
+
+
+            graph_data_options.title.text = `COVID-19 INDIA STATE WISE (log scale) (where cases >${min_to_show})`
             return (
                 <div className="row">
                     <div className="col-12 col-lg-6 my-2">
@@ -607,34 +470,8 @@ class List extends Component {
                             <div className="col-12 my-2">
                                 <h3>State Wise Data</h3>
                             </div>
-
-                            <br />
                             <div className="table-responsive">
-                                <DataTable
-                                    // title="State wise Data"
-                                    responsive={true}
-                                    striped={true}
-                                    keyField="id"
-                                    dense={true}
-                                    columns={columns}
-                                    data={dataTable_data}
-                                />
-                                {/* <table className="table table-striped table-hover table-sm text-left">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">State</th>
-                                            <th scope="col">Total</th>
-                                            <th scope="col">Active</th>
-                                            <th scope="col">Death</th>
-                                            <th scope="col">Recovered</th>
-                                            <th scope="col">Graph</th> 
-                                        </tr>
-                                    </thead>
-                        <tbody>
-                            {data_list}
-                        </tbody>
-                                </table> */}
+                                <Table data={data} />
                             </div>
 
                             <div className="col-6">

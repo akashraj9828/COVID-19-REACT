@@ -67,8 +67,9 @@ class Map extends Component {
     setup_chart() {
         // console.log("map setup chart");
 
-        let enable_cirlce = true
-        let enable_legend = true
+        let enable_cirlce = false
+        let enable_legend = false
+        let enable_tooltip = false
         let data = this.state.data
         let am4geodata_indiaHigh = this.state.am4geodata_indiaHigh
         let india_dict = this.state.india_dict
@@ -219,21 +220,24 @@ class Map extends Component {
         polygonTemplate.propertyFields.fill = "color";
         polygonTemplate.fillOpacity = 1;
 
-        // set tooltip color
-        polygonSeries.tooltip.getFillFromObject = false;
-        polygonSeries.tooltip.background.fill = am4core.color("rgba(100,100,100,0.8)");
-        polygonSeries.tooltip.label.fill = am4core.color("white");
-        // 
+        if (enable_tooltip) {
 
-        polygonTemplate.tooltipText = `[bold] {name}[/]
+            // set tooltip color
+            polygonSeries.tooltip.getFillFromObject = false;
+            polygonSeries.tooltip.background.fill = am4core.color("rgba(100,100,100,0.8)");
+            polygonSeries.tooltip.label.fill = am4core.color("white");
+            // 
+
+            polygonTemplate.tooltipText = `[bold] {name}[/]
         -------
         Total: [bold]{value}[/] 
+        Active: [bold]{active}[/] 
         Recovered: [bold]{recovered}[/] 
         Deaths: [bold]{deaths}`;
-
-        var hs = polygonTemplate.states.create("hover");
-        hs.propertyFields.fill = "color";
-        hs.fillOpacity = 0;
+        }
+        // var hs = polygonTemplate.states.create("hover");
+        // hs.propertyFields.fill = "color";
+        // hs.fillOpacity = 0;
 
         let currentComponent = this;
 
@@ -247,11 +251,15 @@ class Map extends Component {
             var circle = imageTemplate.createChild(am4core.Circle);
             circle.fillOpacity = 1;
             circle.propertyFields.fill = "color";
-            circle.tooltipText = `[bold] {name}[/]
+            if (enable_tooltip) {
+
+                circle.tooltipText = `[bold] {name}[/]
             -------
             Total: [bold]{value}[/] 
+            Active: [bold]{active}[/] 
             Recovered: [bold]{recovered}[/] 
             Deaths: [bold]{deaths}`;
+            }
             // console.log(states_cases)
             // console.log("max", Math.max(...states_cases))
             imageSeries.heatRules.push({
