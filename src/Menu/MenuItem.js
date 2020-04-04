@@ -5,7 +5,7 @@ function MenuItem(props) {
 
     return (
         <Link className="nav-link" to={props.data.href}>
-            {props.data.text}
+            <span>{props.data.text}</span>
         </Link>
     )
 }

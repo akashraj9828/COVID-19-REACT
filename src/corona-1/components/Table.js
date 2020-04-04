@@ -97,7 +97,7 @@ function Table(props){
                     color: "orange",
                     fontWeight: "500",
                 },
-                format: row => <span>{row.active} <small className="blinking" style={{ color: "red" }}>{row.new_active > 0 ? "+" + row.new_active : ""}</small></span>,
+                format: row => <span>{row.active} <small className="blinking">{row.new_active > 0 ? "+" + row.new_active : ""}</small></span>,
                 width: "100px"
 
 

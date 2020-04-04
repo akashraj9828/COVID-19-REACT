@@ -1,6 +1,24 @@
-# 
+# COVID-19 Dashboard In React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Live at [https://akashraj.tech/corona/interactive/](https://akashraj.tech/corona/interactive/)
+
+## Output
+> ![Input](./screenshot/map.png)
+> ![Input](./screenshot/graph.png)
+> ![Input](./screenshot/graph2.png)
+> ![Input](./screenshot/district.png)
+# Important note:
+ - Change the ``install_directory`` variable in ``App.js`` according to the directory in which you'll be serving this project. Set directory relative to root of your server (for ``Heroku`` use ``/``)
+ - 3 options are Available for map configuration  in ``src/corona-2/components/Map.js  in setup_chart()`` toggle them according to your preference
+  
+        let enable_cirlce = true; 
+        let enable_legend = true;
+        let enable_tooltip = true;
+        let max_cirlce_size=50;
+        let min_cirlce_size=2;
+    
+ - Then build the project with ``npm run build``
+ - Serve the content of ``/build`` directory 
 
 ## Available Scripts
 
@@ -23,4 +41,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.

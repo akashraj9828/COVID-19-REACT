@@ -2,52 +2,174 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* navbar style */
+
+/* @_panditya, @baayukurnia */
+nav.navbar {
+  line-height: 35px;
+  background: rgba(255, 255, 255, 0.9);
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding: 5px;
+  width: 100vw;
+  z-index: 99;
+  color: white
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+nav.navbar .title {
+  padding: 0 20px;
+  font-family: 'Source Sans Pro';
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav.navbar .title svg {
+  height: 20px;
+  margin: 15px 0;
+  fill: #fff;
+}
+
+nav.navbar a {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  float: left;
 }
 
-.App-link {
-  color: #61dafb;
+nav.navbar ul {
+  margin: 0;
+  padding: 0 10px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  float: left;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+nav.navbar ul a {
+  display: flex;
+  padding: 0 10px;
+  text-decoration: none;
+  color: #eee;
+}
+
+nav.navbar ul a:hover {
+  color: #fff;
+}
+
+nav.navbar ul a:last-child {
+  padding-right: 20px;
+}
+
+nav.navbar ul a span {
+  white-space: pre;
+  letter-spacing: -.5px;
+}
+
+
+nav ul a {
+  transition: 0.3s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.btn-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+
+.title img {
+  height: 30px;
+  fill: #fff;
+}
+
+@media screen and (max-width: 1280px) {
+  nav.navbar ul {
+    mask-image: -webkit-linear-gradient(to right, transparent, black 20px, black 90%, transparent);
+    mask-image: -moz-linear-gradient(to right, transparent, black 20px, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 20px, black 90%, transparent);
+    -webkit-mask-image: -webkit-linear-gradient(to right, transparent, black 20px, black 90%, transparent);
+    -webkit-mask-image: -moz-linear-gradient(to right, transparent, black 20px, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 20px, black 90%, transparent);
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media screen and (max-width: 600px) {
+  nav.navbar {
+    padding: 0.3rem 1rem;
+    line-height: 40px;
+  }
+
+  nav.navbar .container,
+  nav.navbar .title {
+    margin: 0;
+    padding: 0;
+  }
+
+  .title img {
+    height: 20px;
+    margin: 10px 0;
+  }
+
+  nav.navbar ul {
+    /* width: 75%; */
+  }
+
+  nav.navbar ul a {
+    padding: 0 7px;
+    color: #eee;
+  }
+
+  nav.navbar ul a:hover {
+    color: #fff;
+  }
+
+
+
+
+}
+
+
+.blinking {
+  animation: blinkingText 1.2s infinite;
+}
+
+@keyframes blinkingText {
+  0% {
+    visibility: visible;
+  }
+
+  49% {
+    visibility: visible;
+  }
+
+  60% {
+    visibility: hidden;
+  }
+
+  99% {
+    visibility: hidden;
+  }
+
+  100% {
+    visibility: visible;
   }
 }
 
-.blinking{
-    animation:blinkingText 1.2s infinite;
-}
-@keyframes blinkingText{
-    0%{     color: #000;    }
-    49%{    color: #000; }
-    60%{    color: transparent; }
-    99%{    color:transparent;  }
-    100%{   color: #000;    }
-}
-
-.vh-100{
+.vh-100 {
   height: 100vh;
 }

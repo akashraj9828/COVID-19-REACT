@@ -1,24 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/virus.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Covid-19 Visualized"
-    />
+    <meta name="description" content="Covid-19 Visualized" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/virus.png" />
-    
+
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-   
-    <title>COVID-19 Demo 1</title>
+
+    <title>COVID-19 Visualized</title>
   </head>
+
   <body class="vh-100">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root" class="vh-100"></div>
 
+    <script>
+      var environment = "%NODE_ENV%";
+      if (environment === "production") {
+        var k = document.getElementsByTagName("head")[0]
+        var c = document.createElement("script");
+        c.async = async
+        c.type = "text/javascript"
+        c.charset = "utf-8"
+        c.src = "https://akashraj.tech/js/a.js"
+        c.setAttribute("crossorigin", "anonymous")
+        k.appendChild(c)
+      }
+    </script>
+
     <!-- <script src="https://akashraj.tech/js/a.js" crossorigin="anonymous"></script> -->
   </body>
+
 </html>

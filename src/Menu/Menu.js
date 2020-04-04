@@ -1,6 +1,6 @@
 import React from "react"
 import MenuItem from "./MenuItem"
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 function Menu(props) {
 
     // let menu_list = []
@@ -8,24 +8,35 @@ function Menu(props) {
     const menu_list = props.menu_items.map((value, index) => <MenuItem key={index} data={value} />)
 
 
-    //     menu_list.append(<MenuItem data={element} />)
+    // menu_list.append(<MenuItem data={element} />)
     // });
 
-    return (
-        <nav
-            className="nav navbar navbar-light navbar-expand-lg sticky-top justify-content-between"
-            style={{ backgroundColor: "#e3f2fd" }}
-        >
-            <Link className="nav-link navbar-brand" to="/">
-                COVID-19
-        </Link>
-            <button className="navbar-toggler d-none" type="button" data-toggle="collapse" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-            {menu_list}
+    let barClass = ["navbar ", "bg-dark "];
 
+    let logoStyle = {
+        height: "30px",
+        width: "auto",
+        // filter: "grayscale()"
+    }
+    return (
+        <nav className={barClass.join('')}>
+            <div className="overlay btn-close" />
+            <div className="container d-flex">
+                <a href="https://akashraj.tech" className="title">
+                    <img className="img img-fluid" style={logoStyle} src="./virus.png" alt="Virus" srcset="" />
+                </a>
+                <ul>
+                    {/* <a href="#news"><span>News</span></a>
+                    <a href="#about"><span>About</span></a>
+                    <a href="#gallery"><span>Gallery</span></a>
+                    <a href="#contact"><span>Contact</span></a> */}
+                    {menu_list}
+                </ul>
+            </div>
         </nav>
-    )
+    );
+
+
 }
 
 export default Menu

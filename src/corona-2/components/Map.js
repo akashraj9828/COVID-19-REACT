@@ -67,9 +67,11 @@ class Map extends Component {
     setup_chart() {
         // console.log("map setup chart");
 
-        let enable_cirlce = false
-        let enable_legend = false
-        let enable_tooltip = false
+        let enable_cirlce = true
+        let enable_legend = true
+        let enable_tooltip = true
+        let max_cirlce_size=50
+        let min_cirlce_size=2
         let data = this.state.data
         let am4geodata_indiaHigh = this.state.am4geodata_indiaHigh
         let india_dict = this.state.india_dict
@@ -265,8 +267,8 @@ class Map extends Component {
             imageSeries.heatRules.push({
                 "target": circle,
                 "property": "radius",
-                "min": 5,
-                "max": 50,
+                "min": min_cirlce_size,
+                "max": max_cirlce_size,
                 "dataField": "value"
             })
 

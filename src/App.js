@@ -25,23 +25,23 @@ function App() {
       href: "/table",
     },
     {
-      text: 'Back',
+      text: 'Home',
       href: "/../",
     },
   ]
 
-  // const data_url="https://akashraj.tech/corona/no_log_api"
   const data_url = "https://akashraj.tech/corona/api_india"
   const data_timeline_url = "https://akashraj.tech/corona/api_india_timeline"
   // const data_url="./data/api.json"
   // const data_timeline_url="./data/timeline.json"
-  const menu_enable=false
-  const install_directory = "/corona/react_mod"
+  const menu_enable=true
+  const install_directory = "/corona/interactive"
+  // const install_directory = "./"
 
   const menu_placeholder=menu_enable?  <Menu menu_items={menuItems} /> : ""
   return (
     <div className="App">
-      <Router path={"/"} basename={install_directory}>
+      <Router path={"./"} basename={install_directory}>
         {menu_placeholder}
         
         {/* <Header /> */}
