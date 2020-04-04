@@ -9,6 +9,7 @@ import { Pie } from 'react-chartjs-2';
 import { Line } from 'react-chartjs-2';
 import { Polar } from 'react-chartjs-2';
 
+import DataTable from 'react-data-table-component';
 
 
 class List extends Component {
@@ -174,30 +175,136 @@ class List extends Component {
                 return `${(value / total * 100).toFixed(0)}%`;
             };
 
+            let dataTable_data = []
+            let columns = {}
             if (this.state.isLoaded) {
                 if (this.state.dataLoaded) {
-                    console.log("loggggggg", data.state_wise);
+                    // console.log("loggggggg", data.state_wise);
                     let all_keys = Object.keys(data.state_wise)
                     let i = 1;
+
                     for (let key in all_keys) {
                         // console.log(key);
                         key = all_keys[key]
-                        if (data.state_wise[key].confirmed > min_to_show) {
+                        if(!data.state_wise[key].confirmed){
+                            continue
+                        }
+                        let confirmed = parseInt(data.state_wise[key].confirmed)
+                        let deaths = parseInt(data.state_wise[key].deaths)
+                        let recovered = parseInt(data.state_wise[key].recovered)
+                        let active = parseInt(data.state_wise[key].active)
+                        
+                        let new_confirmed = data.state_wise[key].delta.confirmed ? parseInt(data.state_wise[key].delta.confirmed):0
+                        let new_deaths = data.state_wise[key].delta.deaths ? parseInt(data.state_wise[key].delta.deaths):0
+                        let new_recovered = data.state_wise[key].delta.recovered ? parseInt(data.state_wise[key].delta.recovered):0
+                        let new_active = data.state_wise[key].delta.active ? parseInt(data.state_wise[key].delta.active):0
 
-                            states_cases.push(data.state_wise[key].confirmed)
-                            states_death.push(data.state_wise[key].deaths)
-                            states_recovered.push(data.state_wise[key].recovered)
-                            states_active.push(data.state_wise[key].active)
+        
+                        if (confirmed > min_to_show) {
+
+                            states_cases.push(confirmed)
+                            states_death.push(deaths)
+                            states_recovered.push(recovered)
+                            states_active.push(active)
                             states_name.push(key)
                         }
-                        data_list.push(
-                            <ListItem key={key} rank={i++} data={data.state_wise[key]} />
+                        dataTable_data.push(
+                            {
+                                id: i,
+                                state: key,
+                                total: confirmed,
+                                active: active,
+                                deaths: deaths,
+                                recovered: recovered,
+                                new_total: new_confirmed,
+                                new_active: new_active,
+                                new_deaths: new_deaths,
+                                new_recovered: new_recovered,
+                            }
                         )
-                        card_list.push(
-                            <CardItem key={i} rank={i++} data={data.state_wise[key]} />
-                        )
+
+                        // data_list.push(
+                        //     <ListItem key={key} rank={i} data={data.state_wise[key]} />
+                        // )
+                        // card_list.push(
+                        //     <CardItem key={i} rank={i} data={data.state_wise[key]} />
+                        // )
+                        i++
                     }
 
+                    columns = [
+                        {
+                            name: '#',
+                            selector: 'id',
+                            sortable: true,
+                            style:{
+                                fontWeight: "500",
+                            },
+                            width:"40px"
+                        },
+                        {
+                            name: 'State',
+                            selector: 'state',
+                            sortable: true,
+                            left: true,
+                            style:{
+                                fontWeight: "500",
+                            },
+                            
+                        },
+                        {
+                            name: 'Total',
+                            selector: 'total',
+                            sortable: true,
+                            left: true,
+                            style: {
+                                color: "black",
+                                fontWeight: "500",
+                            },
+                            format:row =><span>{row.total} <span className="blinking">{row.new_total>0 ? "+"+row.new_total :""}</span></span>,
+                            // cell:row => <div><div style={{ fontWeight: "bold" }}>{row.total}</div> +{row.new_total}</div>,
+                        },
+                        {
+                            name: 'Active',
+                            selector: 'active',
+                            sortable: true,
+                            left: true,
+                            style: {
+                                color: "orange",
+                                fontWeight: "500",
+                            },
+                            format:row =><span>{row.active} <span className="blinking" style={{color:"red"}}>{row.new_active>0 ? "+"+row.new_active :""}</span></span>,
+
+
+                        },
+                        {
+                            name: 'Deaths',
+                            selector: 'deaths',
+                            sortable: true,
+                            left: true,
+                            style: {
+                                color: "red",
+                                fontWeight: "500",
+                            },
+                            format:row =><span>{row.deaths} <span className="blinking">{row.new_deaths>0 ? "+"+row.new_deaths :""}</span></span>,
+
+
+                        },
+                        {
+                            name: 'Recovered',
+                            selector: 'recovered',
+                            sortable: true,
+                            left: true,
+                            style: {
+                                color: "green",
+                                fontWeight: "500",
+                            },
+                            format:row =><span>{row.recovered} <span className="blinking">{row.new_recovered>0 ? "+"+row.new_recovered :""}</span></span>,
+
+
+                        },
+
+                    ];
                     total_data = data.total_values;
                     graph_data_total_pie = {
                         labels: ["Active", "Recovered", "Deaths"],
@@ -310,7 +417,7 @@ class List extends Component {
 
                         ]
                     };
-                    console.log(graph_data_timeline);
+                    // console.log(graph_data_timeline);
 
                 }
             }
@@ -503,31 +610,40 @@ class List extends Component {
 
                             <br />
                             <div className="table-responsive">
-                                <table className="table table-striped table-hover table-sm ">
+                                <DataTable
+                                    // title="State wise Data"
+                                    responsive={true}
+                                    striped={true}
+                                    keyField="id"
+                                    dense={true}
+                                    columns={columns}
+                                    data={dataTable_data}
+                                />
+                                {/* <table className="table table-striped table-hover table-sm text-left">
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">State</th>
+                                            <th scope="col">Total</th>
                                             <th scope="col">Active</th>
                                             <th scope="col">Death</th>
                                             <th scope="col">Recovered</th>
-                                            <th scope="col">Total</th>
-                                            {/* <th scope="col">Graph</th> */}
+                                            <th scope="col">Graph</th> 
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        {data_list}
-                                    </tbody>
-                                </table>
+                        <tbody>
+                            {data_list}
+                        </tbody>
+                                </table> */}
                             </div>
 
                             <div className="col-6">
                                 {/* {card_list} */}
                             </div>
 
-                        </div>
-                    </div>
-                </div>
+                        </div >
+                    </div >
+                </div >
 
 
             );

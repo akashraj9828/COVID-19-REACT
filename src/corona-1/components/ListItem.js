@@ -40,18 +40,20 @@ function ListItem(props) {
             <tr>
                 <th scope="row">{props.rank}</th>
                 <td>{state_data.state}</td>
+                <td style={{ color: border_col }}>{state_data.confirmed}
+                    <span className="blinking"> {state_data.delta.confirmed ? " (+" + state_data.delta.confirmed + ")" : ""}</span>
+                </td>
                 <td style={{ color: active_col }}>{state_data.active}
-                    {state_data.delta.active ? " (+" + state_data.delta.active + ")" : ""}</td>
+                    <span className="blinking" style={{ color: active_col }}> {state_data.delta.active ? " (+" + state_data.delta.active + ")" : ""}</span>
+                </td>
 
                 <td style={{ color: death_col }}>{state_data.deaths}
-                    {state_data.delta.deaths ? " (+" + state_data.delta.deaths + ")" : ""}
+                    <span className="blinking" style={{ color: death_col }}> {state_data.delta.deaths ? " (+" + state_data.delta.deaths + ")" : ""}</span>
                 </td>
                 <td style={{ color: recovered_col }}>{state_data.recovered}
-                    {state_data.delta.recovered ? " (+" + state_data.delta.recovered + ")" : ""}
+                    <span className="blinking" style={{ color: recovered_col }}>{state_data.delta.recovered ? " (+" + state_data.delta.recovered + ")" : ""}</span>
                 </td>
-                <td style={{ color: border_col }}>{state_data.confirmed}
-                    {state_data.delta.confirmed ? " (+" + state_data.delta.confirmed + ")" : ""}
-                </td>
+
                 {/* <td ><CardItem data={props.data} /></td> */}
             </tr>
             // <li className="list-group-item">

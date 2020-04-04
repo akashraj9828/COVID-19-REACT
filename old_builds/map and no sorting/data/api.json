@@ -1,0 +1,2101 @@
+{
+    "key_values": [
+        {
+            "confirmeddelta": "41",
+            "counterforautotimeupdate": "645",
+            "deceaseddelta": "4",
+            "lastupdatedtime": "02/04/2020 14:32:31",
+            "recovereddelta": "2",
+            "statesdelta": "0"
+        }
+    ],
+    "total_values": {
+        "active": "1869",
+        "confirmed": "2100",
+        "deaths": "60",
+        "delta": {
+            "active": 41,
+            "confirmed": 41,
+            "deaths": 0,
+            "recovered": 0
+        },
+        "lastupdatedtime": "02/04/2020 14:32:31",
+        "recovered": "171",
+        "state": "Total"
+    },
+    "state_wise": {
+        "Maharashtra": {
+            "active": "286",
+            "confirmed": "339",
+            "deaths": "14",
+            "delta": {
+                "active": 4,
+                "confirmed": 4,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "02/04/2020 13:18:19",
+            "recovered": "39",
+            "state": "Maharashtra",
+            "district": {
+                "Pune": {
+                    "confirmed": 54,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 2
+                    }
+                },
+                "Mumbai": {
+                    "confirmed": 142,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 1
+                    }
+                },
+                "Nagpur": {
+                    "confirmed": 12,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Thane": {
+                    "confirmed": 5,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Ahmadnagar": {
+                    "confirmed": 8,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Yavatmal": {
+                    "confirmed": 4,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Aurangabad": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Ratnagiri": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Mumbai Suburban": {
+                    "confirmed": 4,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Unknown": {
+                    "confirmed": 70,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Sangli": {
+                    "confirmed": 25,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Satara": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Kolhapur": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Gondiya": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Jalgaon": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Nashik": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Buldana": {
+                    "confirmed": 6,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 1
+                    }
+                }
+            }
+        },
+        "Kerala": {
+            "active": "237",
+            "confirmed": "265",
+            "deaths": "2",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "01/04/2020 19:27:27",
+            "recovered": "26",
+            "state": "Kerala",
+            "district": {
+                "Thrissur": {
+                    "confirmed": 10,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Alappuzha": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Kasaragod": {
+                    "confirmed": 121,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Pathanamthitta": {
+                    "confirmed": 12,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Kannur": {
+                    "confirmed": 47,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Ernakulam": {
+                    "confirmed": 23,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Kottayam": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Thiruvananthapuram": {
+                    "confirmed": 12,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Idukki": {
+                    "confirmed": 5,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Malappuram": {
+                    "confirmed": 12,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Kozhikode": {
+                    "confirmed": 6,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Palakkad": {
+                    "confirmed": 6,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Wayanad": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Kollam": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Tamil Nadu": {
+            "active": "227",
+            "confirmed": "234",
+            "deaths": "1",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "01/04/2020 18:17:28",
+            "recovered": "6",
+            "state": "Tamil Nadu",
+            "district": {
+                "Kancheepuram": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Chennai": {
+                    "confirmed": 29,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Erode": {
+                    "confirmed": 21,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Coimbatore": {
+                    "confirmed": 33,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Tirunelveli": {
+                    "confirmed": 29,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Tiruppur": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Madurai": {
+                    "confirmed": 15,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Salem": {
+                    "confirmed": 6,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Vellore": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Tiruchirappalli": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Chengalpattu": {
+                    "confirmed": 8,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Thanjavur": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Virudhunagar": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Karur": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Tiruvannamalai": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Viluppuram": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Namakkal": {
+                    "confirmed": 18,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Kanniyakumari": {
+                    "confirmed": 5,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Thoothukkudi": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Theni": {
+                    "confirmed": 20,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Dindigul": {
+                    "confirmed": 17,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Sivaganga": {
+                    "confirmed": 5,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Tirupathur": {
+                    "confirmed": 7,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Thiruvarur": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Delhi": {
+            "active": "144",
+            "confirmed": "152",
+            "deaths": "2",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "01/04/2020 19:47:26",
+            "recovered": "6",
+            "state": "Delhi",
+            "district": {
+                "East Delhi": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "South West Delhi": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "West Delhi": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "North Delhi": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "New Delhi": {
+                    "confirmed": 5,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "South Delhi": {
+                    "confirmed": 26,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "North East Delhi": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "North West Delhi": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Unknown": {
+                    "confirmed": 108,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Andhra Pradesh": {
+            "active": "130",
+            "confirmed": "132",
+            "deaths": "0",
+            "delta": {
+                "active": 21,
+                "confirmed": 21,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "02/04/2020 10:52:36",
+            "recovered": "2",
+            "state": "Andhra Pradesh",
+            "district": {
+                "S.P.S. Nellore": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Prakasam": {
+                    "confirmed": 15,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Visakhapatnam": {
+                    "confirmed": 11,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "East Godavari": {
+                    "confirmed": 6,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Krishna": {
+                    "confirmed": 6,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Chittoor": {
+                    "confirmed": 6,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Guntur": {
+                    "confirmed": 9,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Kurnool": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Anantapur": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "West Godavari": {
+                    "confirmed": 13,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Y.S.R.": {
+                    "confirmed": 15,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Unknown": {
+                    "confirmed": 45,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 21
+                    }
+                }
+            }
+        },
+        "Telangana": {
+            "active": "109",
+            "confirmed": "132",
+            "deaths": "9",
+            "delta": {
+                "active": 5,
+                "confirmed": 5,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "02/04/2020 14:32:40",
+            "recovered": "14",
+            "state": "Telangana",
+            "district": {
+                "Hyderabad": {
+                    "confirmed": 36,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Karimnagar": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Bhadradri Kothagudem": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Ranga Reddy": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Medchal Malkajgiri": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Unknown": {
+                    "confirmed": 87,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 5
+                    }
+                }
+            }
+        },
+        "Rajasthan": {
+            "active": "126",
+            "confirmed": "129",
+            "deaths": "0",
+            "delta": {
+                "active": 9,
+                "confirmed": 9,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "01/04/2020 18:17:27",
+            "recovered": "3",
+            "state": "Rajasthan",
+            "district": {
+                "Jaipur": {
+                    "confirmed": 42,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 7
+                    }
+                },
+                "Jhunjhunu": {
+                    "confirmed": 9,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 1
+                    }
+                },
+                "Bhilwara": {
+                    "confirmed": 22,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Jodhpur": {
+                    "confirmed": 15,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 1
+                    }
+                },
+                "Unknown": {
+                    "confirmed": 21,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Pratapgarh": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Ajmer": {
+                    "confirmed": 5,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Alwar": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Dungarpur": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Tonk": {
+                    "confirmed": 4,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Churu": {
+                    "confirmed": 7,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Uttar Pradesh": {
+            "active": "98",
+            "confirmed": "117",
+            "deaths": "2",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "01/04/2020 18:17:29",
+            "recovered": "17",
+            "state": "Uttar Pradesh",
+            "district": {
+                "Agra": {
+                    "confirmed": 9,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Unknown": {
+                    "confirmed": 43,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Ghaziabad": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Lucknow": {
+                    "confirmed": 9,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Gautam Buddha Nagar": {
+                    "confirmed": 34,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Moradabad": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Varanasi": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Kanpur Nagar": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Pilibhit": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Jaunpur": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Baghpat": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Meerut": {
+                    "confirmed": 5,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Bareilly": {
+                    "confirmed": 6,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Karnataka": {
+            "active": "98",
+            "confirmed": "110",
+            "deaths": "3",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "01/04/2020 20:02:34",
+            "recovered": "9",
+            "state": "Karnataka",
+            "district": {
+                "Bengaluru": {
+                    "confirmed": 47,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Kalaburagi": {
+                    "confirmed": 4,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Kodagu": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Chikkaballapura": {
+                    "confirmed": 10,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Mysuru": {
+                    "confirmed": 19,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Dharwad": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Uttara Kannada": {
+                    "confirmed": 9,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Dakshina Kannada": {
+                    "confirmed": 8,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Udupi": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Chitradurga": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Tumakuru": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Davanagere": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Ballari": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Madhya Pradesh": {
+            "active": "92",
+            "confirmed": "98",
+            "deaths": "6",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "02/04/2020 10:17:42",
+            "recovered": "0",
+            "state": "Madhya Pradesh",
+            "district": {
+                "Jabalpur": {
+                    "confirmed": 8,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Bhopal": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Indore": {
+                    "confirmed": 63,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Ujjain": {
+                    "confirmed": 5,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Gwalior": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Shivpuri": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Unknown": {
+                    "confirmed": 16,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Gujarat": {
+            "active": "73",
+            "confirmed": "87",
+            "deaths": "7",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "02/04/2020 10:52:44",
+            "recovered": "7",
+            "state": "Gujarat",
+            "district": {
+                "Rajkot": {
+                    "confirmed": 10,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Surat": {
+                    "confirmed": 12,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Ahmadabad": {
+                    "confirmed": 31,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Vadodara": {
+                    "confirmed": 9,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Gandhinagar": {
+                    "confirmed": 11,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Kachchh": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Mahesana": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Bhavnagar": {
+                    "confirmed": 6,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Porbandar": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Gir Somnath": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Panch Mahals": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Jammu and Kashmir": {
+            "active": "58",
+            "confirmed": "62",
+            "deaths": "2",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "01/04/2020 20:22:27",
+            "recovered": "2",
+            "state": "Jammu and Kashmir",
+            "district": {
+                "Jammu": {
+                    "confirmed": 9,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Srinagar": {
+                    "confirmed": 17,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Bandipore": {
+                    "confirmed": 9,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Unknown": {
+                    "confirmed": 19,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Rajouri": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Badgam": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Baramula": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Shopian": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Punjab": {
+            "active": "41",
+            "confirmed": "46",
+            "deaths": "4",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "01/04/2020 17:17:28",
+            "recovered": "1",
+            "state": "Punjab",
+            "district": {
+                "Amritsar": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Shahid Bhagat Singh Nagar": {
+                    "confirmed": 19,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "S.A.S. Nagar": {
+                    "confirmed": 9,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Hoshiarpur": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Jalandhar": {
+                    "confirmed": 5,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Unknown": {
+                    "confirmed": 7,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Ludhiana": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Haryana": {
+            "active": "16",
+            "confirmed": "43",
+            "deaths": "0",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "01/04/2020 19:02:30",
+            "recovered": "27",
+            "state": "Haryana",
+            "district": {
+                "Gurugram": {
+                    "confirmed": 24,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Faridabad": {
+                    "confirmed": 6,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Panipat": {
+                    "confirmed": 4,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Panchkula": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Sonipat": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Palwal": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Ambala": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Sirsa": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Hisar": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "West Bengal": {
+            "active": "28",
+            "confirmed": "37",
+            "deaths": "6",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "01/04/2020 19:12:30",
+            "recovered": "3",
+            "state": "West Bengal",
+            "district": {
+                "Kolkata": {
+                    "confirmed": 11,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "North 24 Parganas": {
+                    "confirmed": 4,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Nadia": {
+                    "confirmed": 5,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Medinipur East": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Kalimpong": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Hooghly": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Howrah": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "South 24 Parganas": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Unknown": {
+                    "confirmed": 10,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Bihar": {
+            "active": "23",
+            "confirmed": "24",
+            "deaths": "1",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "01/04/2020 19:12:28",
+            "recovered": "0",
+            "state": "Bihar",
+            "district": {
+                "Munger": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Patna": {
+                    "confirmed": 4,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Siwan": {
+                    "confirmed": 5,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Nalanda": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Unknown": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Lakhisarai": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Bhagalpur": {
+                    "confirmed": 4,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Gopalganj": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Gaya": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Begusarai": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Chandigarh": {
+            "active": "17",
+            "confirmed": "17",
+            "deaths": "0",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "01/04/2020 22:52:26",
+            "recovered": "0",
+            "state": "Chandigarh",
+            "district": {
+                "Chandigarh": {
+                    "confirmed": 15,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Unknown": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Assam": {
+            "active": "16",
+            "confirmed": "16",
+            "deaths": "0",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "02/04/2020 09:42:29",
+            "recovered": "0",
+            "state": "Assam",
+            "district": {
+                "Cachar": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Kamrup Metropolitan": {
+                    "confirmed": 4,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Jorhat": {
+                    "confirmed": 8,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Goalpara": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Ladakh": {
+            "active": "10",
+            "confirmed": "13",
+            "deaths": "0",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "27/03/2020 11:52:25",
+            "recovered": "3",
+            "state": "Ladakh",
+            "district": {
+                "Leh": {
+                    "confirmed": 11,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Kargil": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Andaman and Nicobar Islands": {
+            "active": "10",
+            "confirmed": "10",
+            "deaths": "0",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "30/03/2020 11:27:27",
+            "recovered": "0",
+            "state": "Andaman and Nicobar Islands",
+            "district": {
+                "South Andaman": {
+                    "confirmed": 5,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "North and Middle Andaman": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Unknown": {
+                    "confirmed": 4,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Chhattisgarh": {
+            "active": "7",
+            "confirmed": "9",
+            "deaths": "0",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "31/03/2020 23:07:28",
+            "recovered": "2",
+            "state": "Chhattisgarh",
+            "district": {
+                "Raipur": {
+                    "confirmed": 4,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Rajnandgaon": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Bilaspur": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Durg": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Korba": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Unknown": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Uttarakhand": {
+            "active": "5",
+            "confirmed": "7",
+            "deaths": "0",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "30/03/2020 06:27:24",
+            "recovered": "2",
+            "state": "Uttarakhand",
+            "district": {
+                "Dehradun": {
+                    "confirmed": 4,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Pauri Garhwal": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Unknown": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Goa": {
+            "active": "5",
+            "confirmed": "5",
+            "deaths": "0",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "29/03/2020 18:52:25",
+            "recovered": "0",
+            "state": "Goa",
+            "district": {
+                "North Goa": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Unknown": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Odisha": {
+            "active": "4",
+            "confirmed": "5",
+            "deaths": "0",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "01/04/2020 23:42:26",
+            "recovered": "1",
+            "state": "Odisha",
+            "district": {
+                "Khordha": {
+                    "confirmed": 4,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Bhadrak": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Himachal Pradesh": {
+            "active": "1",
+            "confirmed": "3",
+            "deaths": "1",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "30/03/2020 19:00:43",
+            "recovered": "1",
+            "state": "Himachal Pradesh",
+            "district": {
+                "Kangra": {
+                    "confirmed": 3,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Puducherry": {
+            "active": "3",
+            "confirmed": "3",
+            "deaths": "0",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "01/04/2020 11:02:31",
+            "recovered": "0",
+            "state": "Puducherry",
+            "district": {
+                "Mahe": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Puducherry": {
+                    "confirmed": 2,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Manipur": {
+            "active": "2",
+            "confirmed": "2",
+            "deaths": "0",
+            "delta": {
+                "active": 1,
+                "confirmed": 1,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "02/04/2020 09:42:34",
+            "recovered": "0",
+            "state": "Manipur",
+            "district": {
+                "Imphal West": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                },
+                "Unknown": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 1
+                    }
+                }
+            }
+        },
+        "Jharkhand": {
+            "active": "1",
+            "confirmed": "1",
+            "deaths": "0",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "31/03/2020 17:52:27",
+            "recovered": "0",
+            "state": "Jharkhand",
+            "district": {
+                "Ranchi": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Mizoram": {
+            "active": "1",
+            "confirmed": "1",
+            "deaths": "0",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "26/03/2020 07:19:29",
+            "recovered": "0",
+            "state": "Mizoram",
+            "district": {
+                "Aizawl": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        },
+        "Arunachal Pradesh": {
+            "active": "1",
+            "confirmed": "1",
+            "deaths": "0",
+            "delta": {
+                "active": 1,
+                "confirmed": 1,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "02/04/2020 11:42:31",
+            "recovered": "0",
+            "state": "Arunachal Pradesh",
+            "district": {
+                "Unknown": {
+                    "confirmed": 1,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 1
+                    }
+                }
+            }
+        },
+        "Dadra and Nagar Haveli": {
+            "active": "0",
+            "confirmed": "0",
+            "deaths": "0",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "26/03/2020 07:19:29",
+            "recovered": "0",
+            "state": "Dadra and Nagar Haveli"
+        },
+        "Daman and Diu": {
+            "active": "0",
+            "confirmed": "0",
+            "deaths": "0",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "26/03/2020 07:19:29",
+            "recovered": "0",
+            "state": "Daman and Diu"
+        },
+        "Lakshadweep": {
+            "active": "0",
+            "confirmed": "0",
+            "deaths": "0",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "26/03/2020 07:19:29",
+            "recovered": "0",
+            "state": "Lakshadweep"
+        },
+        "Meghalaya": {
+            "active": "0",
+            "confirmed": "0",
+            "deaths": "0",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "26/03/2020 07:19:29",
+            "recovered": "0",
+            "state": "Meghalaya"
+        },
+        "Nagaland": {
+            "active": "0",
+            "confirmed": "0",
+            "deaths": "0",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "26/03/2020 07:19:29",
+            "recovered": "0",
+            "state": "Nagaland"
+        },
+        "Sikkim": {
+            "active": "0",
+            "confirmed": "0",
+            "deaths": "0",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "26/03/2020 07:19:29",
+            "recovered": "0",
+            "state": "Sikkim"
+        },
+        "Tripura": {
+            "active": "0",
+            "confirmed": "0",
+            "deaths": "0",
+            "delta": {
+                "active": 0,
+                "confirmed": 0,
+                "deaths": 0,
+                "recovered": 0
+            },
+            "lastupdatedtime": "26/03/2020 07:19:29",
+            "recovered": "0",
+            "state": "Tripura"
+        },
+        "Unknown": {
+            "district": {
+                "Unknown": {
+                    "confirmed": 117,
+                    "lastupdatedtime": "",
+                    "delta": {
+                        "confirmed": 0
+                    }
+                }
+            }
+        }
+    }
+}

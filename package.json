@@ -2,7 +2,7 @@
   "name": "demo_1",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/corona/react",
+  "homepage": "./",
   "dependencies": {
     "@amcharts/amcharts4": "^4.9.12",
     "@testing-library/jest-dom": "^4.2.4",
@@ -13,9 +13,11 @@
     "chartjs-plugin-datalabels": "^0.7.0",
     "react": "^16.13.1",
     "react-chartjs-2": "^2.9.0",
+    "react-data-table-component": "^6.3.5",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "styled-components": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

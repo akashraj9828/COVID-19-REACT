@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route }  from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 // import logo from './logo.svg';
 import './App.css';
@@ -23,25 +23,26 @@ function App() {
     //   text: 'Sample 3',
     //   href: "/3",
     // },
-  ] 
+  ]
 
   // const data_url="https://akashraj.tech/corona/no_log_api"
-  const data_url="https://akashraj.tech/corona/api_india"
-  const data_timeline_url="https://akashraj.tech/corona/api_india_timeline"
+  const data_url = "https://akashraj.tech/corona/api_india"
+  const data_timeline_url = "https://akashraj.tech/corona/api_india_timeline"
   // const data_url="./data/api.json"
   // const data_timeline_url="./data/timeline.json"
-
+  const install_directory = "/corona/react_mod"
   return (
     <div className="App">
-      <Router path="/" basename={"/corona/react"}>
-        <Menu menu_items={menuItems} />
-        <Header />
+      <Router path={install_directory} basename={install_directory}>
+        {/* <Menu menu_items={menuItems} /> */}
+        {/* <Header /> */}
         {/* <div className="container"> */}
-        <div className="mx-2 mx-md-5 mx-xl-5 px-0 px-md-5 px-xl-5">
+        {/* <div className="mx-2 mx-md-5 mx-xl-5 px-0 px-md-5 px-xl-5"> */}
+        <div className="m-2">
           <Switch>
             {/* <Route path="/" exact component={CoronaPage1} /> */}
-            <Route path="/" exact render={(props)=> <CoronaPage2 {...props} data_url={data_url} data_timeline_url={data_timeline_url} />} />
-            <Route path="/graphs" exact render={(props)=> <CoronaPage1 {...props} data_url={data_url} data_timeline_url={data_timeline_url} />} />
+            <Route path="/" exact render={(props) => <CoronaPage2 {...props} data_url={data_url} data_timeline_url={data_timeline_url} />} />
+            <Route path="/graphs" exact render={(props) => <CoronaPage1 {...props} data_url={data_url} data_timeline_url={data_timeline_url} />} />
             {/* <Route path="/2" component={CoronaPage2} /> */}
           </Switch>
         </div>

@@ -82,6 +82,8 @@ class Map extends Component {
         let url = this.props.url
         let india_map_url = "./data/india_map.json"
         let india_map_dict = "./data/india_map_dict.json"
+        // let india_map_url = "./data/india_map.json"
+        // let india_map_dict = "./data/india_map_dict.json"
         let data = await fetch(url).then(res => res.json()).then(
             (data) => {return data},
             (error)=>{
@@ -191,6 +193,9 @@ class Map extends Component {
         heatLegend.valueAxis.renderer.labels.template.fontSize = 9;
         heatLegend.valueAxis.renderer.minGridDistance = 30;
         heatLegend.orientation = "vertical";
+        heatLegend.postion="absolute"
+        heatLegend.x=10
+        heatLegend.y=40
         // heatLegend.markerContainer.height = am4core.percent(100);
 
 
@@ -200,7 +205,7 @@ class Map extends Component {
 
         var total_data = data.total_values
         var title = chart.titles.create();
-        title.text = ` Total: [bold]${total_data.confirmed}[/] Recovered: [bold]${total_data.recovered}[/] Deaths: [bold]${total_data.deaths}`;
+        title.text = ` Cases: [bold]${total_data.confirmed}[/] Recovered: [bold]${total_data.recovered}[/] Deaths: [bold]${total_data.deaths}`;
         // title.text = "[bold font-size: 20]India COVID-19 Spread[/]";
         // title.textAlign = "middle";
 
@@ -343,7 +348,7 @@ class Map extends Component {
 
                 <div>
                     {/* This is map */}
-                    <div id="map-chart-container" style={{ width: "100%", height: "500px" }}></div>
+                    <div id="map-chart-container" style={{ width: "100%", height: "100vh" }}></div>
                 </div>
             )
         }
