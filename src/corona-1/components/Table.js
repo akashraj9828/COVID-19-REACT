@@ -7,6 +7,7 @@ function Table(props){
     console.log(props)
         // console.log("loggggggg", data.state_wise);
         const data=props.data
+        const total_data=props.data.total_values
         let all_keys = Object.keys(data.state_wise)
         let i = 1;
         let dataTable_data=[]
@@ -21,10 +22,10 @@ function Table(props){
             let recovered = parseInt(data.state_wise[key].recovered)
             let active = parseInt(data.state_wise[key].active)
 
-            let new_confirmed = data.state_wise[key].delta.confirmed ? parseInt(data.state_wise[key].delta.confirmed) : 0
-            let new_deaths = data.state_wise[key].delta.deaths ? parseInt(data.state_wise[key].delta.deaths) : 0
-            let new_recovered = data.state_wise[key].delta.recovered ? parseInt(data.state_wise[key].delta.recovered) : 0
-            let new_active = data.state_wise[key].delta.active ? parseInt(data.state_wise[key].delta.active) : 0
+            let new_confirmed = data.state_wise[key].deltaconfirmed ? parseInt(data.state_wise[key].deltaconfirmed) : 0
+            let new_deaths = data.state_wise[key].deltadeaths ? parseInt(data.state_wise[key].deltadeaths) : 0
+            let new_recovered = data.state_wise[key].deltarecovered ? parseInt(data.state_wise[key].deltarecovered) : 0
+            let new_active = data.state_wise[key].deltaactive ? parseInt(data.state_wise[key].deltaactive) : 0
             let district_wise = data.state_wise[key].district
 
 
@@ -134,6 +135,9 @@ function Table(props){
         ];
 
         return (
+            <div>
+                    <h6 class='small text-muted m-0 text-center w-100'> Last updated: {total_data.lastupdatedtime}</h6>
+
             <DataTable
             // title="State wise Data"
             noHeader={true}
@@ -148,6 +152,8 @@ function Table(props){
             expandableRows={true}
             expandableRowsComponent={<SubTable/>}
         />
+            </div>
+
 
         )
        

@@ -35,19 +35,21 @@ function App() {
   // const data_url="./data/api.json"
   // const data_timeline_url="./data/timeline.json"
   const menu_enable=true
-  const install_directory = "/corona/interactive"
+  const install_directory = "/corona/visualized"
   // const install_directory = "./"
 
   const menu_placeholder=menu_enable?  <Menu menu_items={menuItems} /> : ""
+  const container_style =menu_enable? { width: "100%", height: "90%" }:{ width: "100%", height: "100%" }
+
   return (
-    <div className="App">
+    <div className="App" style={{ width: "100%", height: "100%" }}>
       <Router path={"./"} basename={install_directory}>
         {menu_placeholder}
         
         {/* <Header /> */}
         {/* <div className="container"> */}
         {/* <div className="mx-2 mx-md-5 mx-xl-5 px-0 px-md-5 px-xl-5"> */}
-        <div className="m-2">
+        <div className="px-1" style={container_style}>
           <Switch>
             {/* <Route path="/" exact component={CoronaPage1} /> */}
             <Route path="/" exact render={(props) => <CoronaPage2 {...props} data_url={data_url} data_timeline_url={data_timeline_url} />} />

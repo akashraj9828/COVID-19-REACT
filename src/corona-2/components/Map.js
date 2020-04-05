@@ -41,17 +41,21 @@ class Map extends Component {
 
         let url = this.props.url
         let india_map_url = "./data/india_map.json"
-        let india_map_dict = "./data/india_map_dict.json"
+        // let india_map_dict = "./data/india_map_dict.json"
         let data = this.getApiData(url, "data")
         let am4geodata_indiaHigh = this.getApiData(india_map_url, "am4geodata_indiaHigh")
-        let india_dict = this.getApiData(india_map_dict, "india_dict")
+        // let india_dict = this.getApiData(india_map_dict, "india_dict")
 
-        Promise.all([data, am4geodata_indiaHigh, india_dict]).then((responses) =>
+        Promise.all([
+            data,
+            am4geodata_indiaHigh,
+            //   india_dict
+        ]).then((responses) =>
             this.setState({
                 isLoaded: true,
                 data: responses[0],
                 am4geodata_indiaHigh: responses[1],
-                india_dict: responses[2],
+                // india_dict: responses[2],
                 hovered: {
                     name: "India",
                     value: responses[0].total_values.confirmed,
@@ -70,11 +74,11 @@ class Map extends Component {
         let enable_cirlce = true
         let enable_legend = true
         let enable_tooltip = true
-        let max_cirlce_size=50
-        let min_cirlce_size=2
+        let max_cirlce_size = 50
+        let min_cirlce_size = 2
         let data = this.state.data
         let am4geodata_indiaHigh = this.state.am4geodata_indiaHigh
-        let india_dict = this.state.india_dict
+        // let india_dict = this.state.india_dict
 
         let india_total_stats = {
             name: "India",
@@ -117,6 +121,7 @@ class Map extends Component {
             let deaths = parseInt(data.state_wise[key].deaths)
             let recovered = parseInt(data.state_wise[key].recovered)
             let active = parseInt(data.state_wise[key].active)
+            let statecode = data.state_wise[key].statecode
             states_cases.push(confirmed)
             // states_death.push(deaths)
             // states_recovered.push(recovered)
@@ -132,7 +137,7 @@ class Map extends Component {
             am4geodata_indiaHigh.features[i].properties.active = active
             am4geodata_indiaHigh.features[i].properties.color = color_fill
             mapData.push({
-                "id": india_dict[key],
+                "id": "IN-" + statecode,
                 "name": key,
                 "value": confirmed,
                 "deaths": deaths,
@@ -188,7 +193,9 @@ class Map extends Component {
         var total_data = data.total_values
         var title = chart.titles.create();
         // title.text = ` Cases: [bold]${total_data.confirmed}[/] Recovered: [bold]${total_data.recovered}[/] Deaths: [bold]${total_data.deaths}`;
-        title.text = "[bold font-size: 20]India COVID-19 Spread[/]";
+        // title.text = "[bold font-size: 20]India COVID-19 Spread[/]";
+        title.html = `<h5 class='font-weight-bold m-0' style={font-size: 20}>India COVID-19 Spread</h5>
+                        <h6 class='small text-muted m-0'> Last updated: ${total_data.lastupdatedtime}</h6> `;
         // title.textAlign = "middle";
 
         chart.geodata = am4geodata_indiaHigh;
@@ -359,7 +366,9 @@ class Map extends Component {
         let error = this.state.error
         let isLoaded = this.state.isLoaded
         if (error) {
-            return <div> Error: {error.message} </div>
+            return <div > Error: {
+                error.message
+            } < /div>
         } else if (!isLoaded) {
             let loader_style = {
                 position: "fixed",
@@ -372,28 +381,63 @@ class Map extends Component {
                 zIndex: "999999999",
                 bottom: "0",
             }
-            return (
-                <div className="loader" >
-                    <div className="corona-loading" style={loader_style}>
-                        <img className="mt-5"
-                            src="./virus.png"
-                            alt="" />
-                        <p className="text-center" style={{ margin: "auto" }}> Loading result... </p>
-                    </div>
-                </div>
+            return ( <
+                div className = "loader" >
+                <
+                div className = "corona-loading"
+                style = {
+                    loader_style
+                } >
+                <
+                img className = "mt-5"
+                src = "./virus.png"
+                alt = "" / >
+                <
+                p className = "text-center"
+                style = {
+                    {
+                        margin: "auto"
+                    }
+                } > Loading result... < /p> <
+                /div> <
+                /div>
             )
-        }
-        else {
+        } else {
 
             return (
 
-                <div> {/* This is map */}
-                    <div id="map-chart-container" style={{ width: "100%", height: "100vh" }}></div>
+                <
+                div style = {
+                    {
+                        width: "100%",
+                        height: "100%"
+                    }
+                } > {
+                    /* This is map */ } <
+                div id = "map-chart-container"
+                style = {
+                    {
+                        width: "100%",
+                        height: "100%"
+                    }
+                } > < /div>
 
-                    <div id="info-bar" style={{ position: "fixed", bottom: "25px", width: "100%" }}>
-                        <InfoBar data={this.state.hovered} />
-                    </div>
-                </div>
+                <
+                div id = "info-bar"
+                style = {
+                    {
+                        position: "fixed",
+                        bottom: "25px",
+                        width: "100%"
+                    }
+                } >
+                <
+                InfoBar data = {
+                    this.state.hovered
+                }
+                /> <
+                /div> <
+                /div>
             )
         }
     }

@@ -177,10 +177,10 @@ class List extends Component {
                         let recovered = parseInt(data.state_wise[key].recovered)
                         let active = parseInt(data.state_wise[key].active)
 
-                        let new_confirmed = data.state_wise[key].delta.confirmed ? parseInt(data.state_wise[key].delta.confirmed) : 0
-                        let new_deaths = data.state_wise[key].delta.deaths ? parseInt(data.state_wise[key].delta.deaths) : 0
-                        let new_recovered = data.state_wise[key].delta.recovered ? parseInt(data.state_wise[key].delta.recovered) : 0
-                        let new_active = data.state_wise[key].delta.active ? parseInt(data.state_wise[key].delta.active) : 0
+                        let new_confirmed = data.state_wise[key].deltaconfirmed ? parseInt(data.state_wise[key].deltaconfirmed) : 0
+                        let new_deaths = data.state_wise[key].deltadeaths ? parseInt(data.state_wise[key].deltadeaths) : 0
+                        let new_recovered = data.state_wise[key].deltarecovered ? parseInt(data.state_wise[key].deltarecovered) : 0
+                        let new_active = data.state_wise[key].deltaactive ? parseInt(data.state_wise[key].deltaactive) : 0
                         let district_wise = data.state_wise[key].district
 
 
@@ -433,6 +433,7 @@ class List extends Component {
             graph_data_options.title.text = `COVID-19 INDIA STATE WISE (log scale) (where cases >${min_to_show})`
             return (
                 <div className="row">
+                    <h6 class='small text-muted m-0 text-center w-100'> Last updated: {total_data.lastupdatedtime}</h6>
                     <div className="col-12 col-lg-6 my-2">
                         <h3>Total</h3>
 
