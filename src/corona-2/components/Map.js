@@ -48,9 +48,9 @@ class Map extends Component {
 
         Promise.all([
             data,
-            am4geodata_indiaHigh,
+             am4geodata_indiaHigh,
             //   india_dict
-        ]).then((responses) =>
+            ]).then((responses) =>
             this.setState({
                 isLoaded: true,
                 data: responses[0],
@@ -71,11 +71,11 @@ class Map extends Component {
     setup_chart() {
         // console.log("map setup chart");
 
-        let enable_cirlce = true
-        let enable_legend = true
-        let enable_tooltip = true
-        let max_cirlce_size = 50
-        let min_cirlce_size = 2
+        let enable_cirlce = false
+        let enable_legend = false
+        let enable_tooltip = false
+        let max_cirlce_size=50
+        let min_cirlce_size=2
         let data = this.state.data
         let am4geodata_indiaHigh = this.state.am4geodata_indiaHigh
         // let india_dict = this.state.india_dict
@@ -137,7 +137,7 @@ class Map extends Component {
             am4geodata_indiaHigh.features[i].properties.active = active
             am4geodata_indiaHigh.features[i].properties.color = color_fill
             mapData.push({
-                "id": "IN-" + statecode,
+                "id": "IN-"+statecode,
                 "name": key,
                 "value": confirmed,
                 "deaths": deaths,
@@ -366,9 +366,7 @@ class Map extends Component {
         let error = this.state.error
         let isLoaded = this.state.isLoaded
         if (error) {
-            return <div > Error: {
-                error.message
-            } < /div>
+            return <div> Error: {error.message} </div>
         } else if (!isLoaded) {
             let loader_style = {
                 position: "fixed",
@@ -381,63 +379,28 @@ class Map extends Component {
                 zIndex: "999999999",
                 bottom: "0",
             }
-            return ( <
-                div className = "loader" >
-                <
-                div className = "corona-loading"
-                style = {
-                    loader_style
-                } >
-                <
-                img className = "mt-5"
-                src = "./virus.png"
-                alt = "" / >
-                <
-                p className = "text-center"
-                style = {
-                    {
-                        margin: "auto"
-                    }
-                } > Loading result... < /p> <
-                /div> <
-                /div>
+            return (
+                <div className="loader" >
+                    <div className="corona-loading" style={loader_style}>
+                        <img className="mt-5"
+                            src="./virus.png"
+                            alt="" />
+                        <p className="text-center" style={{ margin: "auto" }}> Loading result... </p>
+                    </div>
+                </div>
             )
-        } else {
+        }
+        else {
 
             return (
 
-                <
-                div style = {
-                    {
-                        width: "100%",
-                        height: "100%"
-                    }
-                } > {
-                    /* This is map */ } <
-                div id = "map-chart-container"
-                style = {
-                    {
-                        width: "100%",
-                        height: "100%"
-                    }
-                } > < /div>
+                <div style={{ width: "100%", height: "100%" }}> {/* This is map */}
+                    <div id="map-chart-container" style={{ width: "100%", height: "100%" }}></div>
 
-                <
-                div id = "info-bar"
-                style = {
-                    {
-                        position: "fixed",
-                        bottom: "25px",
-                        width: "100%"
-                    }
-                } >
-                <
-                InfoBar data = {
-                    this.state.hovered
-                }
-                /> <
-                /div> <
-                /div>
+                    <div id="info-bar" style={{ position: "fixed", bottom: "25px", width: "100%" }}>
+                        <InfoBar data={this.state.hovered} />
+                    </div>
+                </div>
             )
         }
     }
