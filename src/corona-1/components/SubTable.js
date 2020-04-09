@@ -64,7 +64,7 @@ function SubTable(props) {
             sortable: true,
             left: true,
             style: {
-                color: "black",
+                // color: "black",
                 fontWeight: "500",
             },
             format: row => <span>{row.cases} <small className="blinking">{row.new_cases > 0 ? "+" + row.new_cases : ""}</small></span>,
@@ -82,7 +82,7 @@ function SubTable(props) {
             <DataTable
                 title={`District wise ${data.name}`}
                 noHeader={true}
-                // theme="dark"
+                theme={props.theme}
                 // title={false}
                 responsive={true}
                 striped={true}

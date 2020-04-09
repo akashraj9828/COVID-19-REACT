@@ -22,14 +22,10 @@ function Menu(props) {
         <nav className={barClass.join('')}>
             <div className="overlay btn-close" />
             <div className="container d-flex">
-                <a href="https://akashraj.tech" className="title">
-                    <img className="img img-fluid" style={logoStyle} src="./virus.png" alt="Virus" srcset="" />
+                <a href="https://akashraj.tech" className="title d-none d-sm-block">
+                    <img className="img img-fluid" style={logoStyle} src="./virus.png" alt="Virus" />
                 </a>
                 <ul>
-                    {/* <a href="#news"><span>News</span></a>
-                    <a href="#about"><span>About</span></a>
-                    <a href="#gallery"><span>Gallery</span></a>
-                    <a href="#contact"><span>Contact</span></a> */}
                     {menu_list}
                 </ul>
             </div>

@@ -6,7 +6,7 @@ import { Bar } from 'react-chartjs-2';
 
 import { HorizontalBar } from 'react-chartjs-2';
 
-function ListItem(props) {
+function TableRow(props) {
     // console.log(props);
     let new_col = "rgba(245,227,66,0.5)"
     // let new_col="rgba(255,50,40,0.4)"
@@ -64,4 +64,4 @@ function ListItem(props) {
     }
 }
 
-export default ListItem
+export default TableRow

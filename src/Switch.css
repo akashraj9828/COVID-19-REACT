@@ -1,0 +1,15 @@
+/* .scale-option{
+    position: fixed!important;
+    top: 45px;
+    right: 10px;
+    z-index: 1;
+} */
+.custom-configuration{
+    position: fixed!important;
+    top: 80px;
+    right: 10px;
+    z-index: 1;
+}
+.above-options{
+    z-index: 2;
+}

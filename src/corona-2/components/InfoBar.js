@@ -22,7 +22,7 @@ function InfoBar(props) {
             {/* {} */}
             {name}
         </h4>
-       <span><span style={{fontWeight:"bold",color:"black"}}>Cases:  {total} /</span> </span>
+       <span><span style={{fontWeight:"bold"}}>Cases:  {total} /</span> </span>
        <span><span style={{fontWeight:"bold",color:"orange"}}>Active:  {active} /</span> </span>
        <span><span style={{fontWeight:"bold",color:"red"}}>Deaths:  {deaths} /</span> </span>
        <span><span style={{fontWeight:"bold",color:"green"}}>Recovered:  {recovered} </span> </span>

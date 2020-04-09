@@ -1,9 +1,9 @@
 import React from "react"
 import { Component } from "react"
-import ListItem from "./ListItem"
-import CardItem from "./CardItem"
+// import ListItem from "./TableRow"
+// import CardItem from "./CardItem"
 import Table from "./Table"
-import SubTable from "./SubTable"
+// import SubTable from "./SubTable"
 
 import graph_data_options from "./GraphDataOptions"
 import graph_data_timeline_options from "./GraphDataTimelineOptions"
@@ -11,14 +11,46 @@ import graph_data_total_options from "./GraphDataTotalOptions"
 // import 'chartjs-plugin-datalabels';
 
 import { Bar } from 'react-chartjs-2';
+// import { HorizontalBar } from 'react-chartjs-2';
 import { Pie } from 'react-chartjs-2';
 import { Line } from 'react-chartjs-2';
-import { Polar } from 'react-chartjs-2';
+// import { Polar } from 'react-chartjs-2';
 
-import DataTable from 'react-data-table-component';
+// import DataTable from 'react-data-table-component';
+
+// import "./Switch.css"
+
+function setCookie(name, value, days) {
+    var expires = "";
+    if (value === true || value === false) {
+        value = value.toString()
+    }
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=./";
+    // console.log(name + "=" + (value || "") + expires + "; path=./")
+}
+
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+function eraseCookie(name) {
+    document.cookie = name + '=; Max-Age=-99999999;';
+}
 
 
-class List extends Component {
+class Graph extends Component {
 
     constructor(props) {
         super(props)
@@ -28,67 +60,58 @@ class List extends Component {
             'timeline': {},
             'dataLoaded': false,
             'timelineLoaded': false,
+            'log_scale': getCookie("log_scale") ? eval(getCookie("log_scale")) : true,
+            'fullscreen': getCookie("fullscreen") ? eval(getCookie("fullscreen")) : false,
+            'dark': getCookie("dark") ? eval(getCookie("dark")) : false,
         }
+        // this.scales = { '1': "linear", '-1': "logarithmic" }
+        this.handleChange = this.handleChange.bind(this)
     }
 
-    updateState(obj) {
-        // console.log("Update called with", obj);
-
-        let copy_state = Object.assign({}, this.state)
-        let keys = Object.keys(obj)
-        for (let key in keys) {
-            // console.log(keys[key]);
-            let kk = keys[key]
-            copy_state[kk] = obj[kk]
-        }
-        // copy_state[key] = value
-        // console.log("new state should have been", copy_state);
-
-        this.setState(
-            copy_state
-        )
+    getScale() {
+        return this.state.log_scale ? "logarithmic" : "linear";
     }
-    fetchAndSet(url, key) {
-        // console.log("before update ", this.state);
-        fetch(url).then(res => res.json()).then(
-            (data) => {
 
-                let change = {
-                    [key]: data,
-                    // isLoaded: true,
-                }
-                if (key === "data") {
-                    change.dataLoaded = true
-                }
-                if (key === "timeline") {
-                    change.timelineLoaded = true
-                }
-                this.updateState(change)
+    handleChange(id, key) {
+        // console.log(id, key);
+        // console.log(key, "=", this.state[key]);
+        let checkbox = document.getElementById(id)
+        let prev = checkbox.checked
+        let new_val = !this.state[key]
+        setCookie(key, new_val)
+        this.setState({ [key]: new_val }, this.setup_chart)
+        // this.forceUpdate();
 
-                if (this.state.dataLoaded && this.state.timelineLoaded) {
-                    let change = {
-                        isLoaded: true,
-                    }
-                    this.updateState(change)
-                }
-                // console.log("after update", this.state);
-                return true
-            },
-            (error) => {
-                let change = {
-                    error: error,
-                    isLoaded: true,
-                }
-                this.updateState(change)
+        return !prev;
 
-            }
-        )
     }
+
+
     componentDidMount() {
         let url = this.props.url
+        // let url ="https://akashraj.tech"
         let timeline_url = this.props.timeline_url
-        this.fetchAndSet(url, 'data')
-        this.fetchAndSet(timeline_url, 'timeline')
+        // this.fetchAndSet(url, 'data')
+        // this.fetchAndSet(timeline_url, 'timeline')
+        Promise.all([fetch(url), fetch(timeline_url)]).then((responses) => {
+
+
+            let json_data = []
+            responses.forEach(res => json_data.push(res.json()))
+
+            Promise.all(json_data).then(json_responses => {
+                this.setState({
+                    isLoaded: true,
+                    data: json_responses[0],
+                    dataLoaded: true,
+                    timeline: json_responses[1],
+                    timelineLoaded: true,
+                })
+            }).catch(err => this.setState({ "error": err.message }))
+        }
+        ).catch(err => this.setState({ "error": err.message }))
+
+
     }
 
     render() {
@@ -97,7 +120,7 @@ class List extends Component {
         // console.log(error, isLoaded, data);
 
         if (error) {
-            return <div>Error: {error.message}</div>;
+            return <div className="text-danger font-weight-bold"> Error: {error.message} </div>
         } else if (!isLoaded) {
             let loader_style = {
                 position: "fixed",
@@ -430,10 +453,98 @@ class List extends Component {
 
 
 
-            graph_data_options.title.text = `COVID-19 INDIA STATE WISE (log scale) (where cases >${min_to_show})`
+            graph_data_options.title.text = `COVID-19 INDIA STATE WISE (${this.getScale()} scale) (where cases >${min_to_show})`
+            graph_data_timeline_options.scales.yAxes[0].type = this.getScale()
+            graph_data_options.scales.yAxes[0].type = this.getScale()
+            // console.log(graph_data_options);
+
+            // console.log( graph_data_options.title.text);
+            // console.log( graph_data_timeline_options.scales.yAxes[0].type);
+            // console.log(  graph_data_options.scales.yAxes[0].type);
+            if (this.state.log_scale) {
+                // let temp=graph_data_timeline
+                // graph_data_timeline = { ...graph_data, scale: "log" }
+                // graph_data = { ...temp, scale: "log" }
+                graph_data_timeline = { ...graph_data_timeline, scale: "log" }
+                graph_data = { ...graph_data, scale: "log" }
+            }
+
+            console.log(graph_data);
+
+            let this_copy = this;
+            let fullscreen_style = {
+                // width: "100vw",
+                // height: "100vh",
+                position: "absolute",
+                top: "0",
+                left: "0",
+                zIndex: "100",
+                background: this.state.dark ? "black" : "white",
+                color: this.state.dark ? "white" : "black",
+            }
+            let style = {
+                // width: "100vw",
+                // height: "100%",
+                background: this.state.dark ? "black" : "white",
+                color: this.state.dark ? "white" : "black",
+            }
+
             return (
-                <div className="row">
-                    <h6 class='small text-muted m-0 text-center w-100'> Last updated: {total_data.lastupdatedtime}</h6>
+                <div style={this.state.fullscreen ? fullscreen_style : style}> {/* This is map */}
+
+                <div className="row w-100 m-0">
+                    <div className="setting custom-configuration" >
+                        <div className="setting-button" >
+                            <button className="btn p-0 px-1 m-0" style={{ background: "rgba(255,255,255,0.8)" }} onClick={function () {
+                                this_copy.setState({ show_setting: !this_copy.state.show_setting })
+                            }
+                            }> <img src="./setting.png" alt="Show setting" width="20px" />
+                            </button>
+                        </div>
+                        <div className={`${this.state.show_setting ? '' : 'd-none'} mt-2  p-2 rounded`} style={{
+                            background: this.state.dark ? "rgba(255,255,255,0.8)" : "rgba(0,0,0,0.8)",
+                            color: this.state.dark ? "black" : "white",
+                        }}>
+                            <div className="custom-control custom-switch " >
+                                <input
+                                    type="checkbox"
+                                    className="custom-control-input"
+                                    checked={this.state.log_scale}
+                                    onChange={() => { }}
+                                    id="log_scale_toggle"
+                                />
+                                <label className="custom-control-label"
+                                    onClick={() => this.handleChange("log_scale_toggle", "log_scale")}
+                                    htmlFor="log_scale_toggle">Scale ({this.getScale()}) </label>
+                            </div>
+                            <div className="custom-control custom-switch " >
+                                <input
+                                    type="checkbox"
+                                    className="custom-control-input"
+                                    checked={this.state.fullscreen}
+                                    onChange={() => { }}
+                                    id="fullscreen_toggle"
+                                />
+                                <label className="custom-control-label"
+                                    onClick={() => this.handleChange("fullscreen_toggle", "fullscreen")}
+                                    htmlFor="fullscreen_toggle"> Fullscreen </label>
+                            </div>
+                            <div className="custom-control custom-switch " >
+                                <input
+                                    type="checkbox"
+                                    className="custom-control-input"
+                                    checked={this.state.dark}
+                                    onChange={() => { }}
+                                    id="dark_toggle"
+                                />
+                                <label className="custom-control-label"
+                                    onClick={() => this.handleChange("dark_toggle", "dark")}
+                                    htmlFor="dark_toggle"> Dark Mode </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h6 className='small text-muted m-0 text-center w-100'> Last updated: {total_data.lastupdatedtime}</h6>
                     <div className="col-12 col-lg-6 my-2">
                         <h3>Total</h3>
 
@@ -449,6 +560,8 @@ class List extends Component {
                     </div>
                     <div className="col-12 col-lg-6 my-2 mt-4">
                         <h3>State Wise data</h3>
+
+
                         <Bar data={graph_data}
                             width={100}
                             height={80}
@@ -465,6 +578,7 @@ class List extends Component {
                                     width={100}
                                     height={60}
                                     options={graph_data_timeline_options}
+
                                 />
 
                             </div>
@@ -472,7 +586,9 @@ class List extends Component {
                                 <h3>State Wise Data</h3>
                             </div>
                             <div className="table-responsive">
-                                <Table data={data} />
+                                <Table data={data}
+                                    theme={this.state.dark ? "dark" : "light"}
+                                />
                             </div>
 
                             <div className="col-6">
@@ -482,7 +598,7 @@ class List extends Component {
                         </div >
                     </div >
                 </div >
-
+                        </div>
 
             );
         }
@@ -491,4 +607,4 @@ class List extends Component {
     }
 }
 
-export default List
+export default Graph
