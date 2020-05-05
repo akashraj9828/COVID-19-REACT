@@ -13,7 +13,7 @@
     "chartjs-plugin-datalabels": "^0.7.0",
     "react": "^16.13.1",
     "react-chartjs-2": "^2.9.0",
-    "react-data-table-component": "^6.3.5",
+    "react-data-table-component": "^6.9.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
