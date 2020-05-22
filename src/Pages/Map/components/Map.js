@@ -29,7 +29,6 @@ class Map extends Component {
             map_title: getCookie("map_title") ? eval(getCookie("map_title")) : true,
         }
         this.setup_chart = this.setup_chart.bind(this)
-        // this.setState = this.setState.bind(this)
         this.handleChange = this.handleChange.bind(this)
 
 
@@ -76,13 +75,14 @@ class Map extends Component {
                 )
             }).then(
                 () => this.setup_chart()
-            ).catch(err => {
+            )
+            .catch(err => {
                 this.setState({ "error": err })
-                console.log("---: Map -> componentDidMount -> err", err);
             })
 
         }
-        ).then(() => { }).catch(err => this.setState({ "error": err }))
+        ).then(() => { })
+        .catch(err => this.setState({ "error": err }))
 
 
 
@@ -133,7 +133,6 @@ class Map extends Component {
         var total_len = am4geodata_indiaHigh.features.length
         for (let i = 0; i < total_len; i++) {
             let key = am4geodata_indiaHigh.features[i].properties.name
-            // console.log(key);
             if (!key) {
                 continue
             }
