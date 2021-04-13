@@ -11,7 +11,7 @@
     "@testing-library/user-event": "^10.3.4",
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
-    "chartjs-plugin-datalabels": "^0.7.0",
+    "chartjs-plugin-datalabels": "^1.0.0",
     "react": "^16.13.1",
     "react-chartjs-2": "^2.9.0",
     "react-data-table-component": "^6.3.5",
